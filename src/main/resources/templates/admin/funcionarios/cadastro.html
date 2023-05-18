@@ -1,0 +1,131 @@
+<!-- FORMULÁRIO DE CADASTRO DE USUÁRIO -->
+<html xmlns:th="http://www.thymeleaf.org">
+
+</html>
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <script type="text/javascript" th:src="@{/js/SignupForms.js}"></script>
+
+    <title>Editar Usuários</title>
+</head>
+
+<body class="bg-purple-200">
+    <nav
+        class="bg-purple-900 px-2 sm:px-4 py-6 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="flex justify-center">
+            <p class="text-2xl font-semibold whitespace-nowrap text-white">CADASTRO DE FUNCIONÁRIOS</p>
+    </nav>
+
+    <form action="/admin/funcionarios/salvar" method="POST" th:object="${funcionario}" class="flex justify-center">
+        <div>
+            <div class="rounded-lg ml-20 mb-20 mt-32">
+                <h2 class="text-2xl mb-4 font-semibold">Informações do Funcionário</h2>
+
+                <div class="flex flex-col md:flex-row">
+                    <!-- NOME COMPLETO -->
+                    <div class="mb-6">
+                        <label for="nome" class="block mb-2 text-sm font-medium text-gray-900">NOME COMPLETO</label>
+                        <input type="text" id="nome" th:field="*{nome}"
+                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block p-2.5 w-80 md:w-96 focus:outline-none"
+                            placeholder="" />
+                    </div>
+
+                    <!-- E-MAIL -->
+                    <div class="mb-6 md:ml-4 ml-0">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-MAIL</label>
+                        <input type="email" id="email" th:field="*{email}"
+                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-80 p-2.5 focus:outline-none"
+                            placeholder="" required />
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row">
+                    <!-- CPF -->
+                    <div class="mb-6">
+                        <label for="cpf" class="block mb-2 text-sm font-medium text-gray-900">CPF</label>
+                        <input type="text" autocomplete="on" minlength="14" maxlength="14" id="cpf" th:field="*{cpf}"
+                            onkeypress="maskCPF(this)"
+                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-96 p-2.5 focus:outline-none"
+                            placeholder="" required />
+                    </div>
+                    <div class="mb-6 md:ml-4 ml-0">
+                        <label for="cargo" class="block mb-2 text-sm font-medium text-gray-900">CARGO</label>
+                        <input type="text" id="cargo" th:field="*{cargo}" onkeypress="maskCPF(this)"
+                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-80 p-2.5 focus:outline-none"
+                            placeholder="" required />
+
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row">
+                    <!-- SENHA -->
+                    <div class="mb-6">
+                        <label for="senha" class="block mb-2 text-sm font-medium text-black">SENHA</label>
+                        <input type="password" id="senha" name="senha"
+                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-56 p-2.5 focus:outline-none" />
+                    </div>
+
+                    <!-- REPITA A SENHA -->
+                    <div class="mb-6 md:ml-4 ml-0">
+                        <label for="senha2" class="block mb-2 text-sm font-medium text-gray-900">CONFIRMAR SENHA</label>
+                        <input type="password" id="senha2" name="senha2"
+                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-56 p-2.5 focus:outline-none" />
+                    </div>
+
+                </div>
+                <input type="hidden" id="id" th:field="*{id}" value="" />
+                <div class="mt-8 text-center">
+                    <a type="submit" value="cancel" formnovalidate
+                        class="text-white bg-gray-600 hover:bg-gray-700 font-bold rounded-lg text-sm px-8 py-2.5 text-center"
+                        href="/admin">
+                        Voltar para home
+                    </a>
+                    <button type="submit" onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
+                        th:data-confirm-delete="|Usuario criado com sucesso! |" onchange="this.form.submit()"
+                        class="text-white bg-purple-800 hover:bg-purple-700 font-medium rounded-lg text-sm inline-block w-80 md:w-60 p-2.5 text-center mr-4">
+                        Cadastrar
+                    </button>
+                </div>
+
+    </form>
+</body>
+
+<script>
+
+    //campo confirmar senha 
+
+    var senha = document.getElementById("senha");
+    var senha2 = document.getElementById("senha2");
+
+    function validateSenha() {
+        if (senha.value != senha2.value) {
+            senha2.setCustomValidity("Senhas diferentes!");
+        } else {
+            senha2.setCustomValidity('');
+        }
+    }
+
+    senha.onchange = validateSenha;
+    senha2.onkeyup = validateSenha;
+
+
+//alert criar usuário
+
+
+</script>
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+    body {
+        font-family: "Raleway", sans-serif;
+
+    }
+</style>
+
+<!-- <div class="invisible">
+      <input type="text" id="status" name="status" th:field="*{status}"
+        class="bg-gray-300 text-gray-300 text-sm block w-full p-0" th:placeholder="*{status}" />
+    </div> -->

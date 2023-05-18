@@ -1,0 +1,165 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+</html>
+
+<head>
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <link href="../../../../../static/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+  <script type="text/javascript" th:src="@{/js/ProductForms.js}"></script>
+
+    <title>Dashboard Produtos</title>
+</head>
+
+<body>
+    <div class="text-center justify-between flex items-center mt-10">
+        <!-- TÍTULO -->
+        <p class="text-5xl font-semibold pl-10">Dashboard Produtos</p>
+        <!-- SEARCH BAR -->
+        <div class="flex pl-10">
+            <label for="simple-search" class="sr-only">Procurar produto</label>
+            <div class="relative w-96">
+
+                <input type="text" id="simple-search"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                    placeholder="Procurar produto" required>
+            </div>
+            <button type="submit"
+                class="p-2.5 ml-2 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 rounded-lg border">
+                <i class="ph-light ph-magnifying-glass text-white text-xl"></i>
+                <span class="sr-only">Procurar produto</span>
+            </button>
+        </div>
+        <!-- BOTÕES -->
+        <div class="text-right mr-6 text-md">
+            <a href="/admin/produtos/listar" class="text-black ">
+                <i class="ph-light ph-arrow-counter-clockwise"></i>
+            </a>
+            <a href="/admin/produtos/cadastro" class="text-black pl-4 pr-10">
+                <i class="ph-light ph-plus"></i>
+            </a>
+            <a type="submit" href="/admin" class="text-purple-900">
+                <i class="ph-light ph-sign-out"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="relative overflow-x-auto m-10 rounded-md">
+        <table class="w-full text-sm text-gray-800 text-center">
+            <thead class="text-lg text-white uppercase bg-purple-500 text-center">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-md">
+                        Código
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-md">
+                        Nome
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-md">
+                        Descrição
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-md">
+                        Quantidade
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-md">
+                        Preço (R$)
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-md">
+                        Avaliação
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-md">
+                        Status
+                    </th>
+
+                    <th scope="col" class="px-6 py-3 text-md">
+                        Ações
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+                <tr th:each="dados : ${listaProdutos}">
+                    <td class="text-md" th:text="${dados.id}"></td>
+                    <td class="text-left mr-4" th:text="${dados.nome}"></td>
+                    <td class="text-sm py-10 pl-6 text-left" th:text="${dados.descricao}"></td>
+                    <td class="text-md" th:text="${dados.quantidade}"></td>
+                    <td class="text-md" th:text="${dados.preco}"></td>
+                    <td class="text-md" th:text="${dados.avaliacao}"></td>
+                    <td>
+                        <form action="#" method="post" th:action="@{/produtos/{id}(id=${dados.id})}"
+                            th:object="${produto}">
+
+                            <input onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
+                                th:data-confirm-delete="|Você deseja mudar o status do produto?|" class="form-check-input"
+                                type="checkbox" onchange="this.form.submit()" th:checked="${dados.status}">
+
+                        </form>
+
+                    </td>
+                    <td>
+                        <div class="flex flex-row items-center">
+                            <a th:href="@{/admin/produtos/editar/{id}(id=${dados.id})}"
+                                class="bg-purple-300 hover:bg-purple-500 rounded-lg px-3 py-2 text-center mr-2 text-white ml-5">
+                                <i class="ph-light ph-pencil-line"></i>
+                            </a>
+                            <a th:href="@{/produtos/Detalhes(id=${dados.id})}"
+                                class="bg-gray-400 hover:bg-gray-500 rounded-lg px-3 py-2 text-center ml-2 mr-2 text-white">
+                                <i class="ph-light ph-info"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    </form>
+</body>
+
+
+
+
+<style>
+    .ph-arrow-counter-clockwise {
+        font-size: 30px;
+        margin-top: 5px;
+        margin-right: 2px;
+    }
+
+    .ph-plus {
+        font-size: 30px;
+        margin-top: 5px;
+    }
+
+    .ph-sign-out {
+        font-size: 30px;
+        margin-top: 5px;
+        padding-right: 20px;
+    }
+
+
+    .ph-info {
+        font-size: 20px;
+        color: white;
+        text-decoration: none;
+
+    }
+
+    .ph-pencil-line {
+        font-size: 20px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+    body {
+        font-family: "Raleway", sans-serif;
+
+    }
+</style>
+
+</html>

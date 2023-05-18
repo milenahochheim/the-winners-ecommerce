@@ -1,0 +1,276 @@
+<!-- FORMULÁRIO DE CADASTRO DE USUÁRIO -->
+<html xmlns:th="http://www.thymeleaf.org">
+
+</html>
+
+<head>
+    <link href="../../../../../static/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <script type="text/javascript" src="../../../../../static/js/ProductForms.js">
+    </script>
+    <!-- <script type="text/javascript" th:src="@{/js/ProductForms.js}"></script> -->
+
+    <title>Cadastro de produto</title>
+
+</head>
+
+
+<body class="bg-purple-200">
+    <nav
+        class="bg-purple-900 px-2 sm:px-4 py-6 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="flex justify-center">
+            <p class="text-2xl font-semibold whitespace-nowrap text-white">CADASTRO DE PRODUTOS</p>
+    </nav>
+    <form action="/admin/produtos/salvar" enctype="multipart/form-data" th:object="${produto}" method="POST" class="flex justify-center">
+        <div>
+            <div class="rounded-lg ml-20 mb-20 mt-32">
+                <h2 class="text-2xl mb-4 font-semibold">Informações do Produto</h2>
+
+                <div class="">
+                    <!-- PRODUTO NOME -->
+                    <div class="mb-6">
+                        <label class="block mb-2 text-sm font-medium text-gray-900">NOME DO PRODUTO</label>
+                        <input type="text"th:field="*{nome}" id="nome"
+                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-full p-2.5 pb-4 focus:outline-none"
+                            placeholder="Digite o nome do produto"></i>
+                    </div>
+
+                </div>
+                <!-- DESCRIÇÃO -->
+                <div class="mb-6">
+                    <label class="block mb-2 text-sm font-medium text-gray-900">DESCRIÇÃO DO PRODUTO</label>
+
+                    <textarea type="text" th:field="*{descricao}" id="descricao" min="1" max="500" required
+                        class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-full p-2.5 pb-32 focus:outline-none"
+                        placeholder="Descrição do produto (colocar em tópicos)"></textarea>
+                </div>
+
+                <h2 class="text-2xl mb-4 font-semibold mt-2">Detalhes</h2>
+
+                <div class="flex justify-center">
+                    <!-- QUANTIDADE -->
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-medium text-gray-900">QUANTIDADE</label>
+                        <input type="text" id="quantidade" th:field="*{quantidade}" required
+                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-48 p-2.5 focus:outline-none"
+                            placeholder="Quantidade" />
+                    </div>
+
+                    <!-- PREÇO -->
+                    <div class="mb-6 ml-6">
+                        <label class="block mb-2 text-sm font-medium text-gray-900">PREÇO (R$)</label>
+                        <input type="text" autocomplete="on" id="preco"th:field="*{preco}" required
+                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-48 p-2.5 focus:outline-none"
+                            placeholder="Preço do produto" />
+                    </div>
+
+                    <!-- AVALIAÇÃO -->
+
+                    <div class="mb-4 ml-6">
+                        <label class="block mb-2 text-sm font-medium text-gray-900">AVALIAÇÃO (1 À 5)</label>
+                        <input type="number" id="avaliacao" th:field="*{avaliacao}" required min="0" max="5" step="0.5"
+                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-48 p-2.5 focus:outline-none"
+                            placeholder="Avaliação" />
+                    </div>
+                </div>
+                <!-- LISTA DE IMAGENS (passando como string para o backend) -->
+                <h2 class="text-2xl font-semibold mb-2 mt-2">Imagens</h2>
+                <p class="mb-4">A primeira imagem selecionada será a <span class="font-semibold">imagem
+                        principal</span>.
+                </p>
+                <div class="flex">
+                    <input name="file" type="file" multiple
+                        class="js-file shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-56 p-2.5 focus:outline-none">
+                </div>
+
+                <input type="hidden" id="id" th:field="*{id}" value="" />
+
+                <div class="mt-8 text-center">
+                    <a type="submit" value="cancel" formnovalidate
+                        class="text-white bg-gray-600 hover:bg-gray-700 font-bold rounded-lg text-sm px-8 py-2.5 text-center"
+                        href="/admin/">
+                        Voltar para home
+                    </a>
+                    <button type="submit"
+                        class="text-white bg-purple-700 hover:bg-purple-800 font-bold rounded-lg text-sm px-8 py-2.5 text-center ">Cadastrar
+                    </button>
+                </div>
+
+            </div>
+    </form>
+
+    <script>
+        
+    //     const inputFile = document.querySelector(".js-file");
+    //     const container = document.querySelector(".js-container");
+    //     const errorContainer = document.querySelector(".js-error");
+
+    //     const allowedExtensions = ["jpg", "jpeg", "png", "pdf"];
+    //     const maximumAllowedDimensions = [1920, 1920];
+    //     let files = [];
+
+    //     inputFile.addEventListener("change", (event) => handleChange(event));
+
+    //     function handleChange(event) {
+    //         if (!event.target.files) {
+    //             return;
+    //         }
+
+    //         const selectedFiles = Array.from(event.target.files);
+
+    //         const selectedFilesPreview = selectedFiles.map((fileItem) => {
+    //             let size = fileItem.size;
+    //             let sizeSuffixIndex = 0;
+    //             const sizeSuffix = ["B", "KB", "MB", "GB"];
+
+    //             while (size / 1024 > 1) {
+    //                 size = size / 1024;
+    //                 sizeSuffixIndex++;
+    //             }
+    //             size = Number(size.toFixed(1));
+
+    //             const name = fileItem.name.split(".").slice(0, -1).join(".");
+    //             const type = fileItem.type.split("/")[0];
+    //             const extension = fileItem.type.split("/")[1];
+    //             //const extension = filesItem.name.split('.').pop();
+
+    //             const ensureAllowExtensions = allowedExtensions.find(
+    //                 (allowedExtensionsItem) => allowedExtensionsItem === extension
+    //             );
+
+    //             return new Promise((resolve, reject) => {
+    //                 if (!ensureAllowExtensions) {
+    //                     reject(`Arquivos permitidos: ${allowedExtensions.join(", ")}`);
+    //                 }
+
+    //                 if (type === "image") {
+    //                     const image = new Image();
+    //                     image.onload = () => {
+    //                         const { width, height } = image;
+    //                         if (
+    //                             width > maximumAllowedDimensions[0] ||
+    //                             height > maximumAllowedDimensions[1]
+    //                         ) {
+    //                             reject(
+    //                                 `Dimensões máxima permitida: ${maximumAllowedDimensions.join(
+    //                                     "x"
+    //                                 )}`
+    //                             );
+    //                         }
+    //                         fileToBase64({
+    //                             width,
+    //                             height
+    //                         });
+    //                     };
+    //                     image.onerror = () => {
+    //                         reject("Image Erro");
+    //                     };
+    //                     image.src = window.URL.createObjectURL(fileItem);
+    //                 } else {
+    //                     fileToBase64();
+    //                 }
+
+    //                 function fileToBase64(props) {
+    //                     const reader = new FileReader();
+    //                     reader.readAsDataURL(fileItem);
+
+    //                     reader.onloadend = function () {
+    //                         const base64data = reader.result;
+    //                         let result = {
+    //                             name,
+    //                             type,
+    //                             extension,
+    //                             source: base64data,
+    //                             size,
+    //                             sizeSuffix: sizeSuffix[sizeSuffixIndex],
+    //                         };
+
+    //                         if (props) {
+    //                             const { width, height } = props;
+    //                             result = { ...result, width, height };
+    //                         }
+
+    //                         resolve(result);
+    //                     };
+    //                 }
+    //             });
+    //         });
+
+    //         Promise.all(selectedFilesPreview)
+    //             .then((values) => {
+    //                 files = [...files, ...values];
+    //                 renderFiles();
+    //             })
+    //             .catch((data) => {
+    //                 renderError(data);
+    //             })
+    //             .then(() => {
+    //                 inputFile.type = "text";
+    //                 inputFile.type = "file";
+    //             });
+    //     }
+
+    //     function renderFiles() {
+    //         console.log(files);
+    //         container.innerHTML = "";
+    //         files.map((filesItem) => {
+    //             if (filesItem.type === "image") {
+    //                 const image = document.createElement("img");
+    //                 image.src = filesItem.source;
+    //                 image.alt = filesItem.name;
+    //                 image.height = 100;
+    //                 const info = document.createElement("div");
+    //                 info.innerHTML = `
+    //     type: ${filesItem.type} <br>
+    //     name: ${filesItem.name} <br>
+    //     extension: ${filesItem.extension} <br>
+    //     width: ${filesItem.width} <br>
+    //     height: ${filesItem.height} <br>
+    //     size: ${filesItem.size} <br>
+    //     sizeSuffix: ${filesItem.sizeSuffix} <br><br><br>
+    //   `;
+    //                 container.appendChild(image);
+    //                 container.appendChild(info);
+    //             }
+    //         });
+    //     }
+
+    //     function renderError(error) {
+    //         errorContainer.innerHTML = error;
+    //     }
+
+
+    </script>
+
+</body>
+
+</html>
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+    body {
+        font-family: "Raleway", sans-serif;
+
+    }
+</style>
+
+<!-- IMAGES -->
+<!-- <body>
+  <input type="file" id="inputImage" accept="image/*">
+  <textarea id="outputBase64" rows="10" cols="80" readonly></textarea>
+
+  <script>
+    document.getElementById('inputImage').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onloadend = function() {
+          const base64 = reader.result;
+          document.getElementById('outputBase64').value = base64;
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body> -->
