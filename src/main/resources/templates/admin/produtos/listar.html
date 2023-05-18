@@ -58,13 +58,16 @@
                         Descrição
                     </th>
                     <th scope="col" class="px-6 py-3 text-md">
-                        Quantidade
+                        Estoque
                     </th>
                     <th scope="col" class="px-6 py-3 text-md">
                         Preço (R$)
                     </th>
                     <th scope="col" class="px-6 py-3 text-md">
                         Avaliação
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-md">
+                        Imagem
                     </th>
                     <th scope="col" class="px-6 py-3 text-md">
                         Status
@@ -86,6 +89,8 @@
                     <td class="text-md" th:text="${dados.quantidade}"></td>
                     <td class="text-md" th:text="${dados.preco}"></td>
                     <td class="text-md" th:text="${dados.avaliacao}"></td>
+					<td><img class="ml-4" th:src="@{/admin/produtos/mostrarImagem/{imagem}(imagem=${dados.nomeImagem})}" width="100"/></td>
+
                     <td>
                         <form action="#" method="post" th:action="@{/produtos/{id}(id=${dados.id})}"
                             th:object="${produto}">

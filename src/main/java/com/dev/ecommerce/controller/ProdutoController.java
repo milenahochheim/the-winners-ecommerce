@@ -1,5 +1,6 @@
 package com.dev.ecommerce.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,7 +27,7 @@ import com.dev.ecommerce.repository.ProdutoRepository;
 @Controller
 public class ProdutoController {
 
-    private static String caminhoImagens = System.getProperty("desktop/images/");
+    private static String caminhoImagens = System.getProperty("java.io.tmpdir");
 
     @Autowired
     private ProdutoRepository produtoRepository;
@@ -49,6 +51,18 @@ public class ProdutoController {
         Optional<Produto> produto = produtoRepository.findById(id);
         // model.addAttribute("cargo", cargo);
         return cadastrar(produto.get());
+    }
+
+    @GetMapping("/admin/produtos/mostrarImagem/{imagem}")
+    @ResponseBody
+    public byte[] retornarImagem(@PathVariable("imagem") String imagem) throws IOException {
+        // System.out.println(imagem);
+        File imagemArquivo = new File(caminhoImagens + imagem);
+        if (imagem != null || imagem.trim().length() > 0) {
+            System.out.println("No IF");
+            return Files.readAllBytes(imagemArquivo.toPath());
+        }
+        return null;
     }
 
     @GetMapping("/admin/produtos/remover/{id}")
