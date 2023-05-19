@@ -19,7 +19,7 @@ public class CargoController {
     @Autowired
     private CargoRepository cargoRepository;
 
-    @GetMapping("/admin/cargos/cadastrar")
+    @GetMapping("/admin/cargos/cadastro")
     public ModelAndView cadastrar(Cargo cargo) {
         ModelAndView mv = new ModelAndView("admin/cargos/cadastro");
         mv.addObject("cargo", cargo);
@@ -28,8 +28,8 @@ public class CargoController {
 
     @GetMapping("/admin/cargos/listar")
     public ModelAndView listar() {
-        ModelAndView mv = new ModelAndView("admin/cargos/lista");
-        mv.addObject("listacargos", cargoRepository.findAll());
+        ModelAndView mv = new ModelAndView("admin/cargos/listar");
+        mv.addObject("listaCargos", cargoRepository.findAll());
         return mv;
     }
 

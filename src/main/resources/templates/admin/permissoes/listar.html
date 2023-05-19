@@ -54,21 +54,12 @@
                     <th scope="col" class="px-6 py-3 text-md">
                         Nome
                     </th>
-                    <th scope="col" class="px-6 py-3 text-md">
-                        E-mail
-                    </th>
+             
                     <th scope="col" class="px-6 py-3 text-md">
                         Cargo
                     </th>
 
-                    <th scope="col" class="px-6 py-3 text-md">
-                        CPF
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-md">
-                        Status
-                    </th>
-
-                    <th scope="col" class="px-6 py-3 text-md">
+                   <th scope="col" class="px-6 py-3 text-md">
                         Ações
                     </th>
 
@@ -79,7 +70,7 @@
                 <tr th:each="funcionario : ${listaFuncionarios}">
                     <td class="text-md" th:text="${funcionario.nome}"></td>
                     <td class="text-md" th:text="${funcionario.email}"></td>
-                    <td class="text-md" th:text="${funcionario.cargo.nome}"></td>
+                    <td class="text-md" th:text="${funcionario.cargo}"></td>
                     <td class="text-md" th:text="${funcionario.cpf}"></td>
                     <td>
                         <form action="#" method="post" th:action="@{/funcionario/{id}(id=${funcionario.id})}"
@@ -91,6 +82,7 @@
                                 th:checked="${funcionario.status}">
 
                         </form>
+                    <!-- <td><a th:href="@{/usuario/Edit(id=${funcionario.id})}" class="btn btn-danger btn-small">Editar</a></td> -->
                     </td>
                     <td>
                         <div class="flex justify-center mt-2">

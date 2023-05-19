@@ -10,75 +10,45 @@
 
     <script type="text/javascript" th:src="@{/js/SignupForms.js}"></script>
 
-    <title>Cadastro Funcionários</title>
+    <title>Permissões</title>
 </head>
 
 <body class="bg-purple-200">
     <nav
         class="bg-purple-900 px-2 sm:px-4 py-6 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
         <div class="flex justify-center">
-            <p class="text-2xl font-semibold whitespace-nowrap text-white">CADASTRO DE FUNCIONÁRIOS</p>
+            <p class="text-2xl font-semibold whitespace-nowrap text-white">CADASTRO DE PERMISSÕES</p>
     </nav>
 
-    <form action="/admin/funcionarios/salvar" method="POST" th:object="${funcionario}" class="flex justify-center">
+    <form action="/admin/permissoes/salvar" method="POST" th:object="${permissao}" class="flex justify-center">
         <div>
             <div class="rounded-lg ml-20 mb-20 mt-32">
-                <h2 class="text-2xl mb-4 font-semibold">Informações do Funcionário</h2>
+                <h2 class="text-2xl mb-4 font-semibold">Permissões</h2>
 
                 <div class="flex flex-col md:flex-row">
-                    <!-- NOME COMPLETO -->
+                    <!-- NOME  -->
                     <div class="mb-6">
-                        <label for="nome" class="block mb-2 text-sm font-medium text-gray-900">NOME COMPLETO</label>
-                        <input type="text" id="nome" th:field="*{nome}"
+                        <label for="nome" class="block mb-2 text-sm font-medium text-gray-900">Funcionário</label>
+
+                        <select
                             class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block p-2.5 w-80 md:w-96 focus:outline-none"
-                            placeholder="" />
+                            th:field="*{funcionario}">
+                            <option th:each="funcionarios: ${listaFuncionarios}" th:value="${funcionarios.id}" th:text="${funcionarios.nome}"></option>
+                        </select>
                     </div>
 
-                    <!-- E-MAIL -->
-                    <div class="mb-6 md:ml-4 ml-0">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-MAIL</label>
-                        <input type="email" id="email" th:field="*{email}"
-                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-80 p-2.5 focus:outline-none"
-                            placeholder="" required />
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-row">
-                    <!-- CPF -->
-                    <div class="mb-6">
-                        <label for="cpf" class="block mb-2 text-sm font-medium text-gray-900">CPF</label>
-                        <input type="text" autocomplete="on" minlength="14" maxlength="14" id="cpf" th:field="*{cpf}"
-                            onkeypress="maskCPF(this)"
-                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-96 p-2.5 focus:outline-none"
-                            placeholder="" required />
-                    </div>
+                       <div class="mb-6">
+                        <label for="nome" class="block mb-2 text-sm font-medium text-gray-900">Cargo</label>
 
-                    <!-- CARGO -->
-                    <div class="mb-6 md:ml-4 ml-0">
-                        <label for="cargo" class="block mb-2 text-sm font-medium text-gray-900">CARGO</label>
-                          <select
+                        <select
                             class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block p-2.5 w-80 md:w-96 focus:outline-none"
                             th:field="*{cargo}">
                             <option th:each="cargos: ${listaCargos}" th:value="${cargos.id}" th:text="${cargos.nome}"></option>
                         </select>
-
                     </div>
                 </div>
-                <div class="flex flex-col md:flex-row">
-                    <!-- SENHA -->
-                    <div class="mb-6">
-                        <label for="senha" class="block mb-2 text-sm font-medium text-black">SENHA</label>
-                        <input type="password" id="senha" name="senha"
-                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-56 p-2.5 focus:outline-none" />
-                    </div>
 
-                    <!-- REPITA A SENHA -->
-                    <div class="mb-6 md:ml-4 ml-0">
-                        <label for="senha2" class="block mb-2 text-sm font-medium text-gray-900">CONFIRMAR SENHA</label>
-                        <input type="password" id="senha2" name="senha2"
-                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-56 p-2.5 focus:outline-none" />
-                    </div>
 
-                </div>
                 <input type="hidden" id="id" th:field="*{id}" value="" />
                 <div class="mt-8 text-center">
                     <a type="submit" value="cancel" formnovalidate
