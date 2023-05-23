@@ -10,7 +10,7 @@
 
     <script type="text/javascript" th:src="@{/js/SignupForms.js}"></script>
 
-    <title>Cadastro Funcionários</title>
+    <title>Cadastro Usuários</title>
 </head>
 
 <body class="bg-purple-200">
@@ -48,24 +48,22 @@
                         <label for="cpf" class="block mb-2 text-sm font-medium text-gray-900">CPF</label>
                         <input type="text" autocomplete="on" minlength="14" maxlength="14" id="cpf" th:field="*{cpf}"
                             onkeypress="maskCPF(this)"
-                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-96 p-2.5 focus:outline-none"
+                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-60 p-2.5 focus:outline-none"
                             placeholder="" required />
                     </div>
-
-                    <!-- CARGO -->
-                    <div class="mb-6 md:ml-4 ml-0">
+                    <!-- <div class="mb-6 md:ml-4 ml-0">
                         <label for="cargo" class="block mb-2 text-sm font-medium text-gray-900">CARGO</label>
-                          <select
+                        <input type="text" id="cargo" th:field="*{cargo}" onkeypress="maskCPF(this)"
+                            class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-80 p-2.5 focus:outline-none"
+                            placeholder="" required />
+                              <select
                             class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block p-2.5 w-80 md:w-96 focus:outline-none"
                             th:field="*{cargo}">
                             <option th:each="cargos: ${listaCargos}" th:value="${cargos.id}" th:text="${cargos.nome}"></option>
-                        </select>
 
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-row">
+                    </div> -->
                     <!-- SENHA -->
-                    <div class="mb-6">
+                    <div class="mb-6 md:ml-4 ml-0">
                         <label for="senha" class="block mb-2 text-sm font-medium text-black">SENHA</label>
                         <input type="password" id="senha" name="senha"
                             class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-56 p-2.5 focus:outline-none" />

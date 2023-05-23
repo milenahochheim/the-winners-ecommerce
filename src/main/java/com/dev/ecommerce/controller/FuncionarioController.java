@@ -1,8 +1,11 @@
 package com.dev.ecommerce.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +21,13 @@ import com.dev.ecommerce.repository.FuncionarioRepository;
 @Controller
 public class FuncionarioController {
 
+    static List<String> cargo = null;
+    static {
+        cargo = new ArrayList<>();
+        cargo.add("Administrador");
+        cargo.add("Estoquista");
+    }
+
     @Autowired
     private FuncionarioRepository funcionarioRepository;
 
@@ -29,14 +39,21 @@ public class FuncionarioController {
         ModelAndView mv = new ModelAndView("admin/funcionarios/cadastro");
         mv.addObject("funcionario", funcionario);
         mv.addObject("listaCargos", cargoRepository.findAll());
-
         return mv;
     }
+
+    // @GetMapping("/admin/funcionarios/cadastro")
+    // public ModelAndView cadastrar(Model model) {
+    // ModelAndView mv = new ModelAndView("admin/funcionarios/cadastro");
+    // model.addAttribute("cargo", cargo);
+    // return mv;
+    // }
 
     @GetMapping("/admin/funcionarios/listar")
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("admin/funcionarios/listar");
         mv.addObject("listaFuncionarios", funcionarioRepository.findAll());
+        mv.addObject("listaCargos", cargoRepository.findAll());
 
         return mv;
     }
@@ -62,8 +79,7 @@ public class FuncionarioController {
         if (result.hasErrors()) {
             return cadastrar(funcionario);
         }
-        // funcionario.setSenha(new
-        // BCryptPasswordEncoder().encode(funcionario.getSenha()));
+        funcionario.setSenha(new BCryptPasswordEncoder().encode(funcionario.getSenha()));
         funcionarioRepository.saveAndFlush(funcionario);
 
         return cadastrar(new Funcionario());

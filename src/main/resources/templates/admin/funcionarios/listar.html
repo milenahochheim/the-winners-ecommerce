@@ -26,15 +26,20 @@
                     placeholder="Procurar produto" required>
             </div>
             <button type="submit"
-            class="px-2.5 py-2 ml-2 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 rounded-lg border">
-            <i class="ph-light ph-magnifying-glass text-white text-xl"></i>
-            <span class="sr-only">Procurar funcionários</span>
-        </button>
+                class="px-2.5 py-2 ml-2 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 rounded-lg border">
+                <i class="ph-light ph-magnifying-glass text-white text-xl"></i>
+                <span class="sr-only">Procurar funcionários</span>
+            </button>
+            <a class="text-white bg-purple-600 hover:bg-purple-700 font-bold rounded-lg text-sm px-8 py-2.5 text-center"
+            href="/admin/permissoes/listar"
+            >   
+            LISTAGEM DE CARGOS
+            </a>
         </div>
         <!-- BOTÕES -->
         <div class="text-right mr-6 text-md">
             <!-- <a href="./DashboardProducts.html"> -->
-                <a href="/admin/funcionarios/listar" class="text-black ">
+            <a href="/admin/funcionarios/listar" class="text-black ">
                 <i class="ph-light ph-arrow-counter-clockwise"></i>
             </a>
             <a href="/admin/funcionarios/cadastro" class="text-black pl-4 pr-10">
@@ -46,7 +51,6 @@
             </a>
         </div>
     </div>
-
     <div class="relative overflow-x-auto m-10 rounded-md">
         <table class="w-full text-sm text-gray-800 text-center">
             <thead class="text-lg text-white uppercase bg-purple-500 text-center">
@@ -57,9 +61,9 @@
                     <th scope="col" class="px-6 py-3 text-md">
                         E-mail
                     </th>
-                    <th scope="col" class="px-6 py-3 text-md">
+                    <!-- <th scope="col" class="px-6 py-3 text-md">
                         Cargo
-                    </th>
+                    </th> -->
 
                     <th scope="col" class="px-6 py-3 text-md">
                         CPF
@@ -79,7 +83,7 @@
                 <tr th:each="funcionario : ${listaFuncionarios}">
                     <td class="text-md" th:text="${funcionario.nome}"></td>
                     <td class="text-md" th:text="${funcionario.email}"></td>
-                    <td class="text-md" th:text="${funcionario.cargo.nome}"></td>
+                    <!-- <td class="text-md" th:text="${funcionario.cargo}"></td> -->
                     <td class="text-md" th:text="${funcionario.cpf}"></td>
                     <td>
                         <form action="#" method="post" th:action="@{/funcionario/{id}(id=${funcionario.id})}"
@@ -106,7 +110,7 @@
 
     </div>
     </form>
-<!-- 
+    <!-- 
     <div class="text-right mr-10">
         <a type="submit"
         class="text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-8 py-2.5 text-center"

@@ -1,0 +1,224 @@
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link href="../../../../../static/css/main.css" rel="stylesheet" />
+  <script src="https://unpkg.com/phosphor-icons"></script>
+
+  <link rel="stylesheet" th:href="@{/css/main.css}" />
+  <title>Login</title>
+</head>
+
+<body class="bg-gray-50">
+  <nav class="bg-purple-900 p-8 fixed w-full z-20 top-0 left-0 border-b border-gray-200">
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+      <a th:href="@{/home}" class="flex items-center">
+        <span class="self-center text-3xl font-semibold whitespace-nowrap text-white title">Winners Collection</span>
+      </a>
+      <div class="flex md:order-2">
+        <a href="./Cart.html">
+          <button type="button"
+            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
+            <i class="ph-light ph-shopping-cart-simple"></i>
+          </button>
+        </a>
+
+        <a th:href="@{/Login/}">
+          <button type="button"
+            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
+            <i class="ph-fill ph-user"></i>
+          </button>
+        </a>
+        <button data-collapse-toggle="navbar-sticky" type="button"
+          class="inline-flex items-center p-2 text-sm text-white rounded-lg md:hidden hover:bg-gray-100"
+          aria-controls="navbar-sticky" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul
+          class="flex flex-col p-4 mt-4 border border-gray-200 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0">
+          <li>
+            <a th:href="@{/home}"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0 aria-current=">Home</a>
+          </li>
+          <li>
+            <a href="./ActionFigures"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Action
+              Figures</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Pop
+              Funko</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Winners</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-gray-300 md:p-0">Contato</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section>
+    <div class="flex justify-center">
+      <div class="items-center py-8 mx-auto md:h-screen mt-32">
+        <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 class="text-xl font-medium leading-tight tracking-tight text-gray-900 md:text-2xl text-center">
+              Acesse sua conta <span class="text-purple-800 font-bold">Winner</span>
+            </h1>
+            <form class="space-y-4 md:space-y-6" method="post" th:action="@{/admin}">
+
+              <div>
+                <label for="username" class="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
+                <input type="text" name="username" id="username"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-purple-600 focus:border-purple-600 block w-full p-2.5 "
+                  placeholder="" required>
+
+              </div>
+              <div>
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Senha</label>
+                <input type="password" name="password" id="passsword"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-purple-600 focus:border-purple-600 block w-full p-2.5 "
+                  required>
+              </div>
+              <div class="">
+                <a href="#" class="text-sm font-medium text-purple-600 hover:underline dark:text-purple-500">Esqueceu a
+                  senha?</a>
+                <p class="text-sm font-light text-gray-500">
+                  Não é um <span class="font-bold">winner</span>?
+                  <a th:href="@{/Cliente/}" class="font-medium text-purple-600 hover:underline"> Crie sua conta</a>
+                </p>
+              </div>
+
+              <div class="flex justify-evenly">
+                <a th:href="@{/admin}">
+                  <button type="button"
+                    class="text-white bg-gray-600 hover:bg-gray-700 font-medium rounded-lg text-sm px-8 py-2.5 text-center">
+                    Cancelar
+
+                  </button>
+                </a>
+                <a>
+                  <button type="submit"
+                    class="text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-8 py-2.5 text-center ">
+                    Acessar
+
+                  </button>
+                </a>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+  .ph-user {
+    font-size: 25px;
+  }
+
+  .ph-shopping-cart-simple {
+    font-size: 25px;
+  }
+
+  body {
+    font-family: "Raleway", sans-serif;
+
+  }
+</style>
+
+<!-- <!DOCTYPE html>
+<html
+  lang="pt"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Página de login</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      .login-form {
+        width: 340px;
+        margin: 50px auto;
+      }
+
+      .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+      }
+
+      .login-form h2 {
+        margin: 0 0 15px;
+      }
+
+      .form-control,
+      .btn {
+        min-height: 38px;
+        border-radius: 2px;
+      }
+
+      .btn {
+        font-size: 15px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-form">
+      <form th:action="@{/admin}" method="post">
+        <h2 class="text-center">Login do Painel Administrativo</h2>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            placeholder="E-mail"
+            required="required"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Senha"
+            required="required"
+          />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">
+            Entrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html> -->

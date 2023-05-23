@@ -21,22 +21,16 @@ public class Funcionario implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
     private String cargo;
 
-    @Column(nullable = false)
     private boolean status = true;
 
-    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
     private String senha;
 
-    @Column(nullable = false, unique = true)
     private String cpf;
 
     // @Column(nullable = false, unique = true)
