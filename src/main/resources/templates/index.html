@@ -25,7 +25,7 @@
         >
       </a>
       <div class="flex md:order-2">
-        <a href="./Cart.html">
+        <a href="@{/carrinho}">
           <button
             type="button"
             class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5"
@@ -207,13 +207,12 @@
         <p class="text-xs font-light text-gray-900">em até 10x s/ juros</p>
         <div class="mt-6 flex">
           <a
-            th:href="@{/home/Detalhes(id=${prod.id})}"
             class="text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           >
             Detalhes
           </a>
           <a
-            th:href="@{/home/Detalhes(id=${prod.id})}"
+            th:href="@{/adicionarCarrinho/{id}(id=${prod.id})}"
             class="text-white bg-purple-800 hover:bg-purple-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center ml-4"
           >
             Comprar

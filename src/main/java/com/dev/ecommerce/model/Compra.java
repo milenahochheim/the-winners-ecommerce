@@ -29,7 +29,11 @@ public class Compra implements Serializable {
     private Cliente cliente;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCompra = new Date();
+
     private String formaPagamento;
+
+    private Double frete;
+
     private Double valorTotal = 0.;
 
     public Long getId() {
@@ -70,6 +74,14 @@ public class Compra implements Serializable {
 
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public void setFrete(Double frete) {
+        this.frete = frete;
+    }
+
+    public Double getFrete() {
+        return frete;
     }
 
 }
