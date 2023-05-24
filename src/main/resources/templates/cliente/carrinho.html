@@ -26,7 +26,7 @@
         >
       </a>
       <div class="flex md:order-2">
-        <a href="./Cart.html">
+        <a th:href="@{/carrinho}">
           <button
             type="button"
             class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5"
@@ -35,7 +35,7 @@
           </button>
         </a>
 
-        <a th:href="@{/Login/}">
+        <a th:href="@{/login}">
           <button
             type="button"
             class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5"
@@ -272,14 +272,15 @@
             </p>
           </div>
         </div>
-        <button
-          href="./Checkout.html"
+        <a
+          th:href="finalizar"
           type="submit"
           class="mb-4 w-full rounded-md bg-purple-400 hover:bg-purple-600 py-1.5 px-28 font-medium text-white"
         >
           Pagar
-        </button>
+        </a>
         <a
+          th:href="@{/}"
           class="mt-4 w-full text-sm font-medium rounded-md bg-gray-300 hover:bg-gray-400 px-4 py-1 text-gray-700 text-center ml-10"
         >
           Continuar comprando
