@@ -99,9 +99,12 @@ public class Cliente extends ClienteDTO {
     public List<Endereco> getEnderecos() {
         return enderecos;
     }
-
     public void setEnderecos(List<Endereco> enderecos) {
         this.enderecos = enderecos;
+        for(int i = 0; i < this.enderecos.size(); i++){
+            this.enderecos.get(i).setCliente(this);
+        }
+        
     }
 
 }

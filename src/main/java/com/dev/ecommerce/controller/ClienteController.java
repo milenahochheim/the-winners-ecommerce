@@ -42,8 +42,11 @@ public class ClienteController {
             return cadastrar(cliente);
         }
         cliente.setSenha(new BCryptPasswordEncoder().encode(cliente.getSenha()));
-        clienteRepository.saveAndFlush(cliente);
+        cliente = clienteRepository.saveAndFlush(cliente); //obter id do cliente
 
+        cliente.setEnderecos(cliente.getEnderecosDTOs());
+        clienteRepository.save(cliente);
+        
         return cadastrar(new Cliente());
     }
 
