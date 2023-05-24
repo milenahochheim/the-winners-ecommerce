@@ -1,6 +1,5 @@
 package com.dev.ecommerce.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,17 +9,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import com.dev.ecommerce.dto.ClienteDTO;
 
 @Entity
 @Table(name = "cliente")
-public class Cliente implements Serializable {
+public class Cliente extends ClienteDTO {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
     private String nome;
 
     private String cpf;
@@ -35,27 +35,6 @@ public class Cliente implements Serializable {
 
     @OneToMany(targetEntity = Endereco.class, cascade = CascadeType.ALL)
     private List<Endereco> enderecos;
-    
-    @Transient
-    private String cep;
-
-    @Transient
-    private String rua;
-
-    @Transient
-    private String numero;
-
-    @Transient
-    private String bairro;
-
-    @Transient
-    private String cidade;
-
-    @Transient
-    private String uf;
-
-    @Transient
-    private String complemento;
 
     public Cliente() {
         super();
@@ -117,60 +96,12 @@ public class Cliente implements Serializable {
         this.genero = genero;
     }
 
-    public String getCep() {
-        return cep;
+    public List<Endereco> getEnderecos() {
+        return enderecos;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getRua() {
-        return rua;
-    }
-
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
 
 }
