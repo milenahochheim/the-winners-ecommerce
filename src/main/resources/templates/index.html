@@ -25,7 +25,7 @@
         >
       </a>
       <div class="flex md:order-2">
-        <a href="@{/carrinho}">
+        <a th:href="@{/carrinho}">
           <button
             type="button"
             class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5"
@@ -34,14 +34,17 @@
           </button>
         </a>
 
-        <a th:href="@{/login}">
+        <a th:href="@{/cliente/login}">
           <button
             type="button"
-            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5"
+            class="peer text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5"
           >
             <i class="ph-fill ph-user"></i>
           </button>
         </a>
+        <a th:href="@{/cliente/cadastro}" class="text-white pt-5"
+          ><span>ou</span> Cadastre-se</a
+        >
         <button
           data-collapse-toggle="navbar-sticky"
           type="button"
@@ -113,7 +116,7 @@
   </nav>
 
   <!-- CARDS DE PRODUTOS -->
-  <div class="flex flex-col md:flex-row justify-center m-20">
+  <div class="flex flex-col md:flex-row justify-center mt-44">
     <!-- CARD 1 -->
     <div
       th:each="prod : ${listaProdutos}"
