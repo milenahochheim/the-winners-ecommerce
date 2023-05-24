@@ -84,4 +84,24 @@ public class FuncionarioController {
 
         return cadastrar(new Funcionario());
     }
+
+    @PostMapping("/admin/funcionarios/{id}")
+    public ModelAndView atualizarStatus(@PathVariable("id") Long id) {
+      
+        Funcionario funcionario = funcionarioRepository.findById(id).get();
+       
+        if (funcionario.isStatus() == false) {
+
+            funcionario.setStatus(true);
+            funcionarioRepository.saveAndFlush(funcionario);
+        } else {
+            funcionario.setStatus(false);
+
+           funcionarioRepository.saveAndFlush(funcionario);
+        }
+        funcionarioRepository.saveAndFlush(funcionario);
+        return  listar();
+
+
+    }
 }

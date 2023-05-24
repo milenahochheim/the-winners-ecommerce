@@ -86,7 +86,7 @@
                     <!-- <td class="text-md" th:text="${funcionario.cargo}"></td> -->
                     <td class="text-md" th:text="${funcionario.cpf}"></td>
                     <td>
-                        <form action="#" method="post" th:action="@{/funcionario/{id}(id=${funcionario.id})}"
+                        <form action="#" method="post" th:action="@{/admin/funcionarios/{id}(id=${funcionario.id})}"
                             th:object="${funcionario}">
 
                             <input onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
