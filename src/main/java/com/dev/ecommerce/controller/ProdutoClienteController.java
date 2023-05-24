@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dev.ecommerce.model.Produto;
@@ -18,17 +19,11 @@ public class ProdutoClienteController {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    // @GetMapping("/produto")
-    // public ModelAndView homePage() {
-    // ModelAndView mv = new ModelAndView("/cliente/produto");
-    // mv.addObject("listaProdutos", produtoRepository.findAll());
-    // return mv;
-    // }
-
     @GetMapping("/produto/{id}")
     public ModelAndView produtoPage(@PathVariable("id") Long id, Model model) {
         ModelAndView mv = new ModelAndView("/cliente/produto");
-        mv.addObject("listaProdutos", produtoRepository.findById(id));
+        Optional<Produto> produto = produtoRepository.findById(id);
+        mv.addObject("prodid", produto.get());
         return mv;
     }
 }

@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org"></html>
 
 <head>
-  <title>Produto</title>
+  <title>clienteuto</title>
   <link rel="stylesheet" th:href="@{/css/main.css}" />
   <script src="https://unpkg.com/phosphor-icons"></script>
   <link href="../../../../../static/css/main.css" rel="stylesheet" />
@@ -9,89 +9,201 @@
 </head>
 
 <body class="bg-white">
+  <nav
+    class="bg-purple-900 p-8 fixed w-full z-20 top-0 left-0 border-b border-gray-200"
+  >
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+      <a th:href="@{/}" class="flex items-center">
+        <span
+          class="self-center text-3xl font-semibold whitespace-nowrap text-white title"
+          >Winners Collection</span
+        >
+      </a>
+      <div class="flex md:order-2">
+        <a th:href="@{/carrinho}">
+          <button
+            type="button"
+            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5"
+          >
+            <i class="ph-light ph-shopping-cart-simple"></i>
+          </button>
+        </a>
+
+        <a th:href="@{/cliente/login}">
+          <button
+            type="button"
+            class="peer text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5"
+          >
+            <i class="ph-fill ph-user"></i>
+          </button>
+        </a>
+        <a th:href="@{/cliente/cadastro}" class="text-white pt-5"
+          ><span>ou</span> Cadastre-se</a
+        >
+        <button
+          data-collapse-toggle="navbar-sticky"
+          type="button"
+          class="inline-flex items-center p-2 text-sm text-white rounded-lg md:hidden hover:bg-gray-100"
+          aria-controls="navbar-sticky"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="w-6 h-6"
+            aria-hidden="true"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div
+        class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+        id="navbar-sticky"
+      >
+        <ul
+          class="flex flex-col p-4 mt-4 border border-gray-200 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0"
+        >
+          <li>
+            <a
+              th:href="@{/home}"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0 aria-current="
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="./ActionFigures"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0"
+              >Action Figures</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0"
+              >Pop Funko</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0"
+              >Winners</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-gray-300 md:p-0"
+              >Contato</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <div
-    class="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4"
+    class="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 mt-36"
   >
     <div
       class="flex justify-center items-center lg:flex-row flex-col gap-8"
-      th:each="prod : ${listaProdutos}"
+      th:each="cliente : ${prodid}"
     >
       <div class="w-full sm:w-96 md:w-8/12 lg:w-6/12 items-center">
         <h2
           class="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 dark:text-white mt-4"
-          th:text="${prod.nome}"
+          th:text="${cliente.nome}"
         ></h2>
 
-        <div class="flex flex-row justify-between mt-5">
-          <img
-            class="dark:hidden"
-            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail4-svg1.svg"
-            alt="stars"
-          />
-          <img
-            class="hidden dark:block"
-            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail4-svg1dark.svg"
-            alt="stars"
-          />
+        <div class="flex items-center mt-2.5 mb-2">
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5 text-yellow-300"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>First star</title>
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5 text-yellow-300"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Second star</title>
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5 text-yellow-300"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Third star</title>
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5 text-yellow-300"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Fourth star</title>
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5 text-yellow-300"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Fifth star</title>
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            ></path>
+          </svg>
           <p
+            th:text="${cliente.avaliacao}"
             class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3"
-            th:text="${prod.avaliacao}"
           ></p>
         </div>
 
         <p
           class="font-normal text-base leading-6 text-gray-600 mt-7"
-          th:text="${prod.descricao}"
+          th:text="${cliente.descricao}"
         ></p>
-        <p
-          class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 dark:text-white"
-          th:text="${prod.preco}"
-        ></p>
-
-        <div class="lg:mt-11 mt-10">
-          <div class="flex flex-row justify-between">
-            <p class="font-medium text-base leading-4 text-gray-600">
-              Select quantity
-            </p>
-            <div class="flex">
-              <span
-                onclick="minus()"
-                class="focus:outline-none dark:text-white focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-r-0 w-7 h-7 flex items-center justify-center pb-1"
-                >-</span
-              >
-              <input
-                id="counter"
-                aria-label="input"
-                class="border dark:text-white border-gray-300 dark:bg-transparent h-full text-center w-14 pb-1"
-                type="text"
-                value="1"
-              />
-              <span
-                onclick="plus()"
-                class="focus:outline-none dark:text-white focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-l-0 w-7 h-7 flex items-center justify-center pb-1"
-                >+</span
-              >
-            </div>
-          </div>
-          <hr class="bg-gray-200 w-full my-2" />
-          <div class="flex flex-row justify-between items-center mt-4">
-            <p class="font-medium text-base leading-4 text-gray-600">
-              Dimensions
-            </p>
-            <img
-              onclick="rotate()"
-              id="rotateSVG"
-              class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer transform duration-100 dark:hidden"
-              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/svg4.svg"
-              alt="dropdown"
-            />
-          </div>
+        <div class="flex flex-row items-center mt-5">
+          <span class="pt-2 pr-2 text-3xl font-semibold"> R$ </span>
+          <p
+            th:text="${cliente.preco}"
+            class="text-3xl font-semibold text-gray-900 pt-2"
+          ></p>
         </div>
-
         <button
-          class="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
+          class="focus:outline-none bg-purple-700 hover:bg-purple-800 font-medium text-base leading-4 text-white w-full py-5 lg:mt-12 mt-6"
         >
-          Add to shopping bag
+          Adicionar no carrinho
         </button>
       </div>
 
@@ -102,9 +214,9 @@
           class="w-full lg:w-8/12 bg-gray-100 flex justify-center items-center"
         >
           <img
-            class="rounded-t-lg"
-            alt="product image"
-            th:src="@{/mostrarImagem/{imagem}(imagem=${prod.nomeImagem})}"
+            class="rounded-t-lg imagem"
+            alt="clienteuct image"
+            th:src="@{/mostrarImagem/{imagem}(imagem=${cliente.nomeImagem})}"
           />
         </div>
       </div>
@@ -150,9 +262,9 @@
     font-family: "Poppins", sans-serif;
   }
 
-  img {
-    max-width: 250px;
-    max-height: 300px;
+  .imagem {
+    max-width: 400px;
+    max-height: 400px;
     width: auto;
     height: auto;
     margin: auto;

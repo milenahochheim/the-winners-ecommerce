@@ -59,7 +59,7 @@ public class ProdutoController {
         // System.out.println(imagem);
         File imagemArquivo = new File(caminhoImagens + imagem);
         if (imagem != null || imagem.trim().length() > 0) {
-            System.out.println("No IF");
+
             return Files.readAllBytes(imagemArquivo.toPath());
         }
         return null;

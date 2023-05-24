@@ -15,18 +15,18 @@
 <body class="bg-purple-200">
   <nav class="bg-purple-900 p-8 fixed w-full z-20 top-0 left-0">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
-      <a th:href="@{/home}" class="flex items-center">
+      <a th:href="@{/}" class="flex items-center">
         <span class="self-center text-3xl font-semibold whitespace-nowrap text-white title">Winners Collection</span>
       </a>
       <div class="flex md:order-2">
-        <a href="./Cart.html">
+        <a th:href="@{/carrinho}">
           <button type="button"
             class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
             <i class="ph-light ph-shopping-cart-simple"></i>
           </button>
         </a>
 
-        <a th:href="@{/Login/}">
+        <a th:href="@{/cliente/login}">
           <button type="button"
             class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
             <i class="ph-fill ph-user"></i>

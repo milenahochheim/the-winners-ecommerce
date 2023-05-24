@@ -34,14 +34,14 @@
     </div>
   </nav>
   <section>
-    <div class="flex justify-center md:mt-72 mt-56">
+    <div class="flex justify-center md:mt-52 mt-56">
       <div class="items-center mx-auto md:h-screen">
         <div class="w-full bg-white rounded-lg shadow dark:border sm:max-w-md xl:p-0">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 class="text-xl font-medium leading-tight tracking-tight text-gray-900 md:text-2xl text-center">
               Acesse sua conta <span class="text-purple-800 font-bold">Winner</span>
             </h1>
-            <form class="space-y-4 md:space-y-6" method="post" action="@{/admin}">
+            <form class="space-y-4 md:space-y-6" th:method="post" th:action="@{/admin}">
 
               <div>
                 <label for="username" class="block mb-2 text-sm font-medium text-gray-900">E-mail</label>
