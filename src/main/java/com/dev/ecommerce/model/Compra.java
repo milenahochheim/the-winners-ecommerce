@@ -27,6 +27,7 @@ public class Compra implements Serializable {
 
     @ManyToOne
     private Cliente cliente;
+    
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCompra = new Date();
 

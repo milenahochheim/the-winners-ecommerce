@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dev.ecommerce.model.Cliente;
+import com.dev.ecommerce.model.Endereco;
 import com.dev.ecommerce.repository.ClienteRepository;
+import com.dev.ecommerce.util.objetoDTOUtil;
 
 @Controller
 public class ClienteController {
