@@ -121,4 +121,17 @@ public class FuncionarioController {
         return null;
     }
 
+
+    //faça uma função pra inserir via postman
+    @PostMapping("/postman/inserirfuncionario")
+    public Funcionario inserir_postman(Model model, @RequestBody Funcionario funcionario){
+        try {
+            funcionario.setSenha(new BCryptPasswordEncoder().encode(funcionario.getSenha()));
+            return funcionarioRepository.saveAndFlush(funcionario);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
 }
