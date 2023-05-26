@@ -25,10 +25,14 @@ import com.dev.ecommerce.repository.ProdutoRepository;
 @Controller
 public class ProdutoController {
 
-    private static String caminhoImagens = System.getProperty("java.io.tmpdir");
+    private String caminhoImagens = System.getProperty("java.io.tmpdir");
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    public void setCaminhoImagens(String caminhoImagens) {
+        this.caminhoImagens = caminhoImagens;
+    }
 
     @GetMapping("/admin/produtos/cadastro")
     public ModelAndView cadastrar(Produto produto) {
@@ -57,7 +61,6 @@ public class ProdutoController {
         // System.out.println(imagem);
         File imagemArquivo = new File(caminhoImagens + imagem);
         if (imagem != null || imagem.trim().length() > 0) {
-
             return Files.readAllBytes(imagemArquivo.toPath());
         }
         return null;
@@ -90,11 +93,20 @@ public class ProdutoController {
                 produto.setNomeImagem(String.valueOf(produto.getId()) + arquivo.getOriginalFilename());
                 produtoRepository.saveAndFlush(produto);
 
+            }else{
+                System.out.println("Arquivo vazio");
+                produto.setNomeImagem(null);   
+                return null;
             }
         } catch (IOException e) {
             e.printStackTrace();
+            return  null;
         }
 
         return cadastrar(new Produto());
+    }
+
+    public String getCaminhoImagens() {
+        return this.caminhoImagens;
     }
 }
