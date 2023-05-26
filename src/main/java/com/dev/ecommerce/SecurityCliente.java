@@ -43,7 +43,7 @@ public class SecurityCliente extends WebSecurityConfigurerAdapter {
 		http.antMatcher(
 				"/finalizar/**").authorizeRequests().anyRequest().hasAnyAuthority("cliente").and()
 				.csrf()
-				.disable().formLogin().loginPage("/cliente/cadastro").permitAll().failureUrl("/cliente/cadastro")
+				.disable().formLogin().loginPage("/cliente/login").permitAll().failureUrl("/cliente/login")
 				.loginProcessingUrl("/finalizar/login").defaultSuccessUrl("/finalizar").usernameParameter("username")
 				.passwordParameter("password").and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/finalizar/logout")).logoutSuccessUrl("/").permitAll()
