@@ -2,33 +2,31 @@ package com.dev.ecommerce.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "produtos")
 public class Produto implements Serializable {
-    public Produto() {
-        super();
-    }
-
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String nome;
+
     private String descricao;
     private int quantidade;
     private Double preco;
     private Double avaliacao;
     private String nomeImagem;
     private boolean status = true;
+    public Produto() {
+        super();
+    }
 
     public String getNomeImagem() {
         return nomeImagem;

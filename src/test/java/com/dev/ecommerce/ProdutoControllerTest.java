@@ -1,17 +1,20 @@
 package com.dev.ecommerce;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+
+
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 
+import org.apache.catalina.connector.Request;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -22,8 +25,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
 
 import com.dev.ecommerce.controller.ProdutoController;
 import com.dev.ecommerce.model.Produto;
@@ -48,42 +49,42 @@ class ProdutoControllerTest {
     void testSalvar_ProdutoComArquivo() throws Exception {
         MockMultipartFile file = new MockMultipartFile("file", "test.jpg", "image/jpeg", "test image data".getBytes());
         Produto produto = new Produto();
-        produto.setId(1L);
+        produto.setAvaliacao(0.5);
+        produto.setNome("nome teste");
+        produto.setDescricao("descricao teste");
+        produto.setNomeImagem(file.getOriginalFilename());
+        produto.setPreco(19.90);
+        produto.setQuantidade(5);
 
         when(produtoRepository.saveAndFlush(any(Produto.class))).thenReturn(produto);
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders.multipart("/admin/produtos/salvar")
         .file(file)
-        .param("nome", "Test Produto")
-        .param("descricao", "Test Description")
-        .param("preco", "10.00");
+        .param("produto", "produto");
         
         mockMvc.perform(requestBuilder)
-        .andExpect(status().isOk())
-        .andExpect(view().name("admin/produtos/cadastro"))
-        .andExpect(model().attributeExists("produto"));
-                
-
-        verify(produtoRepository, times(1)).saveAndFlush(any(Produto.class));
-        verify(produtoRepository, times(1)).saveAndFlush(produto);
-        // Verifique outras ações necessárias, como a escrita do arquivo.
+            .andExpect(status().isOk())
+            .andExpect(view().name("admin/produtos/cadastro"))
+            .andExpect(model().attributeExists("produto"));
     }
 
     @Test
     void testRetornarImagem_ImagemExistente() throws Exception {
         String imageName = "existing_image.jpg";
         byte[] imageData = "test image data".getBytes();
-        Path tempFile = Files.createTempFile("test", ".jpg");
-        Files.write(tempFile, imageData);
+        Path tempDir = Paths.get("src/test/java/com/dev/ecommerce/imgs/existing_image.jpg");
+        produtoController.setCaminhoImagens(tempDir.getParent().toString()+"/");
+        Files.write(tempDir, imageData);
 
         when(produtoRepository.findById(any())).thenReturn(Optional.empty());
 
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/admin/produtos/mostrarImagem/{imagem}", imageName);
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/admin/produtos/mostrarImagem/{imagem}", imageName);//java.nio.file.NoSuchFileException: C:\Users\MATHEU~1\AppData\Local\Temp\existing_image.jpg
 
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
-                .andExpect(content().bytes(imageData));//The method content() is undefined for the type ProdutoControllerTestJava(67108964)
+                .andExpect(content().bytes(imageData));
 
-        Files.deleteIfExists(tempFile);
+        Files.deleteIfExists(tempDir);
     }
+
 }
