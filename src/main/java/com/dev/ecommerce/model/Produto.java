@@ -1,39 +1,55 @@
 package com.dev.ecommerce.model;
 
-import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.dev.ecommerce.dto.ProdutoDTO;
 
 @Entity
 @Table(name = "produtos")
-public class Produto implements Serializable {
+public class Produto extends ProdutoDTO {
     private static final long serialVersionUID = 1L;
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String nome;
 
     private String descricao;
-    private int quantidade;
-    private Double preco;
+
+    private int quantidade = 0;
+
+    private Double preco = 0.;
+
     private Double avaliacao;
-    private String nomeImagem;
+
+    @OneToMany(targetEntity = Imagem.class, cascade = CascadeType.ALL)
+    private List<Imagem> imagens;
+
     private boolean status = true;
+
     public Produto() {
         super();
     }
 
-    public String getNomeImagem() {
-        return nomeImagem;
+    public List<Imagem> getImagens() {
+        return imagens;
     }
 
-    public void setNomeImagem(String nomeImagem) {
-        this.nomeImagem = nomeImagem;
+    public void setImagens(List<Imagem> imagens) {
+        this.imagens = imagens;
     }
 
     public Long getId() {
@@ -90,6 +106,18 @@ public class Produto implements Serializable {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    @Override
+    public String getNomeImagem() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getNomeImagem'");
+    }
+
+    @Override
+    public void setNomeImagem(String nomeImagem) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setNomeImagem'");
     }
 
 }

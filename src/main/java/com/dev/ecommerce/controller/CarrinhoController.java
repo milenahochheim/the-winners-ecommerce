@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dev.ecommerce.model.Endereco;
 import com.dev.ecommerce.model.Cliente;
 import com.dev.ecommerce.model.Compra;
 import com.dev.ecommerce.model.ItensCompra;
 import com.dev.ecommerce.model.Produto;
+import com.dev.ecommerce.repository.EnderecoRepository;
 import com.dev.ecommerce.repository.ClienteRepository;
 import com.dev.ecommerce.repository.CompraRepository;
 import com.dev.ecommerce.repository.ItensCompraRepository;
@@ -33,6 +35,10 @@ public class CarrinhoController {
     private List<ItensCompra> itensCompra = new ArrayList<ItensCompra>();
     private Compra compra = new Compra();
     private Cliente cliente;
+    private Endereco endereco;
+
+    @Autowired
+    private EnderecoRepository repositoryEndereco;
 
     @Autowired
     private ProdutoRepository repositoryProduto;
@@ -80,6 +86,7 @@ public class CarrinhoController {
         mv.addObject("compra", compra);
         mv.addObject("listaItens", itensCompra);
         mv.addObject("cliente", cliente);
+        mv.addObject("enderecos", endereco);
         return mv;
     }
 

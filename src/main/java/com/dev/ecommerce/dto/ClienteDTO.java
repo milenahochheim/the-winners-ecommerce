@@ -3,9 +3,6 @@ package com.dev.ecommerce.dto;
 import java.io.Serializable;
 import java.util.List;
 
-import org.aspectj.apache.bcel.generic.InstructionConstants.Clinit;
-
-import com.dev.ecommerce.model.Cliente;
 import com.dev.ecommerce.model.Endereco;
 
 public abstract class ClienteDTO implements Serializable {
