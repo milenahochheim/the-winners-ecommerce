@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.dev.ecommerce.dto.ProdutoDTO;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "produtos")
@@ -25,6 +26,9 @@ public class Produto extends ProdutoDTO {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @OneToMany(targetEntity = Imagem.class, cascade = CascadeType.ALL)
+    private List<Imagem> imagens;
+
     private String nome;
 
     private String descricao;
@@ -34,9 +38,6 @@ public class Produto extends ProdutoDTO {
     private Double preco = 0.;
 
     private Double avaliacao;
-
-    @OneToMany(targetEntity = Imagem.class, cascade = CascadeType.ALL)
-    private List<Imagem> imagens;
 
     private boolean status = true;
 
@@ -108,16 +109,51 @@ public class Produto extends ProdutoDTO {
         this.status = status;
     }
 
+    public String getNomeImagem(int i) {
+        return imagens.get(i).getNome();
+    }
+
+    public void setNomeImagem(String nomeImagem, int i) {
+        imagens.get(i).setNome(nomeImagem);
+    }
+
     @Override
     public String getNomeImagem() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNomeImagem'");
+        if(!imagens.isEmpty()){
+            return imagens.get(imagens.size() - 1).getNome();
+        }
+        return null;
     }
 
     @Override
     public void setNomeImagem(String nomeImagem) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setNomeImagem'");
+        if(imagens == null){
+            imagens = new ArrayList<>();
+        }
+        imagens.add(new Imagem());
+        imagens.get(imagens.size() - 1).setNome(nomeImagem);
     }
 
+    public void addImagem(Imagem imagem) {
+        if(imagens == null){
+            imagens = new ArrayList<>();
+        }
+        if(imagem.getCaminho() == null || imagem.getCaminho().isEmpty()){
+            throw  new RuntimeException("caminho da imagem não informado");
+        }
+        if(imagem.getNome() == null || imagem.getNome().isEmpty()){
+            throw  new RuntimeException("nome da imagem não informado");
+        }
+        if(imagem.getProduto() == null || imagem.getProduto().getId() == null){
+            throw  new RuntimeException("produto da imagem não informado");
+        }
+        imagens.add(imagem);
+    }
+
+    public void remove(Imagem imagem) {
+        if(imagens == null || imagens.isEmpty()){
+            return;
+        }
+        imagens.remove(imagem);
+    }
 }

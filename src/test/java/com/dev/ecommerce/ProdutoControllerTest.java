@@ -73,7 +73,7 @@ class ProdutoControllerTest {
         String imageName = "existing_image.jpg";
         byte[] imageData = "test image data".getBytes();
         Path tempDir = Paths.get("src/test/java/com/dev/ecommerce/imgs/existing_image.jpg");
-        produtoController.setCaminhoImagens(tempDir.getParent().toString()+"/");
+        produtoController.setStatic_caminho(tempDir.getParent().toString()+"/");
         Files.write(tempDir, imageData);
 
         when(produtoRepository.findById(any())).thenReturn(Optional.empty());

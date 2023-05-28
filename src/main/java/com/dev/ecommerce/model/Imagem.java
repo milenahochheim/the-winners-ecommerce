@@ -26,6 +26,48 @@ public class Imagem implements Serializable {
 
     private String caminho;
 
+    public Imagem(){
+        super();
+    }
 
+    public Imagem(Produto produto, String nome, String caminho){
+        super();
+        this.produto = produto;
+        this.nome = nome;
+        this.caminho = caminho;
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCaminho() {
+        return caminho;
+    }
+
+    public void setCaminho(String caminho) {
+        this.caminho = caminho;
+    }
+
+    
 }
