@@ -3,6 +3,7 @@ package com.dev.ecommerce.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import org.springframework.stereotype.Controller;
 
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ImagemController {
 
-    private static String caminhoImagens = System.getProperty("java.io.tmpdir");
+    private static String caminhoImagens = Paths.get("./src/main/resources/").toAbsolutePath().toString();
 
     @GetMapping("/mostrarImagem/{imagem}")
     @ResponseBody

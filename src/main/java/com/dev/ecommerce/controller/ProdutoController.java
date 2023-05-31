@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.dev.ecommerce.model.Imagem;
 import com.dev.ecommerce.model.Produto;
 import com.dev.ecommerce.repository.ProdutoRepository;
@@ -26,7 +25,7 @@ import com.dev.ecommerce.repository.ProdutoRepository;
 @Controller
 public class ProdutoController {
 
-    private String static_caminho = Paths.get("./src/main/resources/images/").toAbsolutePath().toString();
+    private static String static_caminho = System.getProperty("java.io.tmpdir");
 
     @Autowired
     private ProdutoRepository produtoRepository;
@@ -59,7 +58,8 @@ public class ProdutoController {
     @GetMapping("/admin/produtos/mostrarImagem/{imagem}")
     @ResponseBody
     public byte[] retornarImagem(@PathVariable("imagem") String imagem) throws IOException {
-        // System.out.println(imagem);
+        System.out.println(imagem);
+        System.out.println(static_caminho + imagem);
         File imagemArquivo = new File(static_caminho + imagem);
         if (imagem != null || imagem.trim().length() > 0) {
             return Files.readAllBytes(imagemArquivo.toPath());
