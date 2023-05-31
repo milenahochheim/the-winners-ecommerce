@@ -23,6 +23,8 @@ public class ClienteController {
     @GetMapping("/cliente/cadastro")
     public ModelAndView cadastrar(Cliente cliente) {
         ModelAndView mv = new ModelAndView("cliente/cadastro");
+        Optional <Cliente>  clienteopt = clienteRepository.findById(cliente.getId());
+        cliente = clienteopt.get();
         mv.addObject("cliente", cliente);
         return mv;
     }

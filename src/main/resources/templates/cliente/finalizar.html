@@ -99,7 +99,7 @@
                                 <p class="text-md font-normal">Finalize sua compra <span th:text="${cliente.nome}"
                                         class="text-md font-semibold text-purple-800"></span><span
                                         class="text-md font-semibold text-purple-800">!</span></p>
-                                        <p>rua: <span th:text="${enderecos.rua }"> </p>
+                                        <p>rua: <span th:text="${enderecos.rua}"> </p>
                                 <p>E-mail: <span th:text="${cliente.email}"
                                     
                                         class="text-md font-semibold text-purple-800"></span></p>
@@ -108,7 +108,7 @@
                             <h1 class="text-md font-semibold leading-tight tracking-tight text-gray-900 md:text-md">
                                 Endereço de entrega
                             </h1>
-                            <input type="RADIO" name="endereco" class="mr-2" th:text="${cliente.rua}" />
+                            <input type="RADIO" name="endereco" class="mr-2" th:text="${enderecos.rua}" />
                             <hr class="my-4" />
 
                             <h1 class="text-md font-semibold leading-tight tracking-tight text-gray-900 md:text-md">
@@ -212,8 +212,8 @@
                             <tr th:each="item : ${listaItens}">
                                 <td>
                                     <img class="ml-4"
-                                        th:src="@{/mostrarImagem/{imagem}(imagem=${item.produto.nomeImagem})}"
-                                        width="100" />
+                                        th:src="@{/admin/produtos/mostrarImagem/{imagem}(imagem=${item.produto.nomeImagem})}"
+                                        width="50" />
                                 </td>
                                 <td class="text-left mr-4 text-xs" th:text="${item.produto.nome}"></td>
 

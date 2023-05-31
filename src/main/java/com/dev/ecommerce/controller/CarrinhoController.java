@@ -83,6 +83,14 @@ public class CarrinhoController {
         ModelAndView mv = new ModelAndView("cliente/finalizar");
         calcularTotal();
         // System.out.println(compra.getValorTotal());
+        // endereco = repositoryEndereco.findAll().get(0);
+
+        Optional <Cliente> clienteOpt = repositoryCliente.findById(cliente.getId());
+        cliente = clienteOpt.get();
+        List <Endereco> enderecosList = cliente.getEnderecos();
+
+        endereco = enderecosList.get(0);
+
         mv.addObject("compra", compra);
         mv.addObject("listaItens", itensCompra);
         mv.addObject("cliente", cliente);

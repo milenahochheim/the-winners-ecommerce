@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class Cliente extends ClienteDTO {
 
     private String genero;
 
-    @OneToMany(targetEntity = Endereco.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Endereco.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Endereco> enderecos;
 
     public Cliente() {
