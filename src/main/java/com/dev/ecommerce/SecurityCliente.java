@@ -41,10 +41,10 @@ public class SecurityCliente extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.antMatcher(
-				"/finalizar/**").authorizeRequests().anyRequest().hasAnyAuthority("cliente").and()
+				"/frete/**").authorizeRequests().anyRequest().hasAnyAuthority("cliente").and()
 				.csrf()
 				.disable().formLogin().loginPage("/cliente/login").permitAll().failureUrl("/cliente/login")
-				.loginProcessingUrl("/finalizar/login").defaultSuccessUrl("/finalizar").usernameParameter("username")
+				.loginProcessingUrl("/frete/login").defaultSuccessUrl("/frete").usernameParameter("username")
 				.passwordParameter("password").and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/finalizar/logout")).logoutSuccessUrl("/").permitAll()
 				.and().exceptionHandling().accessDeniedPage("/negadoCliente");

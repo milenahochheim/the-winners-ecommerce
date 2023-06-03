@@ -77,17 +77,15 @@ public class CarrinhoController {
         }
     }
 
-    @GetMapping("/finalizar")
-    public ModelAndView finalizarCompra() {
+    @GetMapping("/frete")
+    public ModelAndView freteCompra() {
         buscarUsuarioLogado();
-        ModelAndView mv = new ModelAndView("cliente/finalizar");
+        ModelAndView mv = new ModelAndView("cliente/frete");
         calcularTotal();
-        // System.out.println(compra.getValorTotal());
-        // endereco = repositoryEndereco.findAll().get(0);
 
-        Optional <Cliente> clienteOpt = repositoryCliente.findById(cliente.getId());
+        Optional<Cliente> clienteOpt = repositoryCliente.findById(cliente.getId());
         cliente = clienteOpt.get();
-        List <Endereco> enderecosList = cliente.getEnderecos();
+        List<Endereco> enderecosList = cliente.getEnderecos();
 
         endereco = enderecosList.get(0);
 
@@ -95,6 +93,47 @@ public class CarrinhoController {
         mv.addObject("listaItens", itensCompra);
         mv.addObject("cliente", cliente);
         mv.addObject("enderecos", endereco);
+        return mv;
+
+    }
+
+    @GetMapping("/pagamento")
+    public ModelAndView pagarCompra() {
+        buscarUsuarioLogado();
+        ModelAndView mv = new ModelAndView("cliente/pagamento");
+        calcularTotal();
+
+        Optional<Cliente> clienteOpt = repositoryCliente.findById(cliente.getId());
+        cliente = clienteOpt.get();
+        List<Endereco> enderecosList = cliente.getEnderecos();
+
+        endereco = enderecosList.get(0);
+
+        mv.addObject("compra", compra);
+        mv.addObject("listaItens", itensCompra);
+        mv.addObject("cliente", cliente);
+        mv.addObject("enderecos", endereco);
+        return mv;
+    }
+
+    @GetMapping("/finalizar")
+    public ModelAndView finalizarCompra(String formaPagamento) {
+        buscarUsuarioLogado();
+        ModelAndView mv = new ModelAndView("cliente/finalizar");
+
+        Optional<Cliente> clienteOpt = repositoryCliente.findById(cliente.getId());
+        cliente = clienteOpt.get();
+        List<Endereco> enderecosList = cliente.getEnderecos();
+
+        endereco = enderecosList.get(0);
+
+        mv.addObject("compra", compra);
+        mv.addObject("listaItens", itensCompra);
+        mv.addObject("cliente", cliente);
+        mv.addObject("enderecos", endereco);
+
+        compra.setCliente(cliente);
+        compra.setFormaPagamento(formaPagamento);
         return mv;
     }
 

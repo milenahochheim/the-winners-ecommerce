@@ -43,6 +43,14 @@
             <i class="ph-fill ph-user"></i>
           </button>
         </a>
+        <a th:href="@{/finalizar/logout}">
+          <button
+            type="button"
+            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5"
+          >
+            <i class="ph-light ph-sign-out"></i>
+          </button>
+        </a>
         <button
           data-collapse-toggle="navbar-sticky"
           type="button"
@@ -112,8 +120,8 @@
       </div>
     </div>
   </nav>
-  <div>
-    <h1 class="text-center text-3xl font-semibold text-purple-400 mt-44">
+  <div class="text-center">
+    <h1 class="text-3xl font-semibold text-purple-400 mt-44 mb-10">
       Pedido concluído com sucesso!
     </h1>
     <a th:href="@{/}">Voltar para página inicial</a>

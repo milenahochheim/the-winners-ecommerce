@@ -13,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" th:src="@{/js/CustomerForms.js}"></script>
 
-    <title>Resumo da compra</title>
+    <title>Checkout</title>
 </head>
 
 <body class="bg-gray-50">
@@ -88,28 +88,122 @@
 
     <div class="pt-40 mb-20">
         <h1 class="mb-8 text-center text-3xl font-semibold text-purple-400">
-            Resumo da compra
+            Pagamento
         </h1>
-        <form action="/finalizar/confirmar" method="post" class="" name="incrição">
+        <form action="/finalizar" method="get" class="" name="incrição">
 
             <div class="justify-center px-6 md:flex md:space-x-2 xl:px-0 mr-10 ml-10">
+                <div class="rounded-lg">
+                    <!-- PAGAMENTO -->
+                    <div class="bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 mb-10">
+                        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                            <div class="">
+                                <p class="text-md font-normal">Finalize sua compra <span th:text="${cliente.nome}"
+                                        class="text-md font-semibold text-purple-800"></span><span
+                                        class="text-md font-semibold text-purple-800">!</span></p>
+                                <p>Endereço de entrega: <span class="text-md font-semibold text-purple-800"
+                                        th:text="${enderecos.rua}"> </p>
+                                <p>E-mail: <span th:text="${cliente.email}"
+                                        class="text-md font-semibold text-purple-800"></span></p>
 
-                <!-- Sub total -->
-                <div class="justify-between rounded-lg bg-white p-6 shadow-md sm:justify-start">
-                    <div class="">
-                        <!-- <p class="text-md font-normal">Finalize sua compra <span th:text="${cliente.nome}"
-                                class="text-md font-semibold text-purple-800"></span><span
-                                class="text-md font-semibold text-purple-800">!</span></p> -->
-                        <p>Endereço de entrega: <span class="text-md font-semibold text-purple-800"
-                                th:text="${enderecos.rua}"> </p>
-                        <p>E-mail: <span th:text="${cliente.email}"
-                                class="text-md font-semibold text-purple-800"></span></p>
+                            </div>
+                            <h1 class="text-md font-semibold leading-tight tracking-tight text-gray-900 md:text-md">
+                                Endereço de entrega
+                            </h1>
+                            <input type="RADIO" name="endereco" class="mr-2" th:text="${enderecos.rua}" />
+                            <hr class="my-4" />
 
+                            <h1 class="text-md font-semibold leading-tight tracking-tight text-gray-900 md:text-md">
+                                Dados para pagamento
+                            </h1>
+                            <div class="mb-4">
+                                <label for="formaPagamento" class="block mb-2 text-sm font-medium text-gray-900">Escolha
+                                    o método de pagamento</label>
+                                <select name="formaPagamento" id="selecionar"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-80 p-2.5 focus:outline-none">
+
+                                    <option value="">Selecionar...</option>
+                                    <option data-section="pix" value="Pix">Pix</option>
+                                    <option data-section="boleto" value="Boleto">Boleto</option>
+                                    <option data-section="cartao" value="Cartao">Cartão de crédito</option>
+                                </select>
+
+                                <div data-name="pix" class="hide mt-4">
+                                    <label for="" class="block mb-2 text-sm font-medium text-gray-900">Digite o CPF para
+                                        pagamento</label>
+                                    <input type="text" autocomplete="on" minlength="14" maxlength="14" id="cpf"
+                                        name="cpf" onkeypress="maskCPF(this)"
+                                        class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block p-2.5 w-80 md:w-72 focus:outline-none"
+                                        placeholder="" />
+                                </div>
+
+                                <div data-name="boleto" class="hide mt-4">
+                                    <label for="" class="block mb-2 text-sm font-medium text-gray-900">Digite o CPF para
+                                        pagamento</label>
+                                    <input type="text" autocomplete="on" minlength="14" maxlength="14" id="cpf"
+                                        name="cpf" onkeypress="maskCPF(this)"
+                                        class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block p-2.5 w-80 md:w-72 focus:outline-none"
+                                        placeholder="" />
+                                </div>
+                                <div class="hide mt-2" data-name="cartao">
+                                    <label class="block mb-2 text-sm font-medium text-gray-900">Número do
+                                        cartão</label>
+                                    <input type="text" autocomplete="on" minlength="16" maxlength="16"
+                                        class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-60 p-2.5 focus:outline-none"
+                                        placeholder="" />
+                                </div>
+                                <div class="hide mt-2" data-name="cartao">
+                                    <label for="dateCard" class="block mb-2 text-sm font-medium text-gray-900">Data
+                                        de
+                                        expiração</label>
+                                    <input type="text" id="inputOculto" name="dateCard" onkeypress="maskDateCard(this)"
+                                        minlength="5" maxlength="5"
+                                        class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-36 p-2.5 focus:outline-none"
+                                        placeholder="" />
+                                </div>
+
+                                <div data-name="cartao" class="hide mt-2">
+                                    <label for="nome" class="block mb-2 text-sm font-medium text-gray-900">Nome
+                                        Completo</label>
+                                    <input type="text" name="nome"
+                                        class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block p-2.5 w-80 md:w-72 focus:outline-none"
+                                        placeholder="" />
+                                </div>
+
+                                <div data-name="cartao" class="hide mt-2">
+                                    <label for="" class="block mb-2 text-sm font-medium text-gray-900">CVV</label>
+                                    <input type="text" id="inputOculto" name="" minlength="3" maxlength="3"
+                                        class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-16 p-2.5 focus:outline-none"
+                                        placeholder="" />
+                                </div>
+
+                                <div data-name="cartao" class="hide mt-2">
+                                    <label for="" class="block mb-2 text-sm font-medium text-gray-900">Parcelas</label>
+
+                                    <select
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-80 p-2.5 focus:outline-none"
+                                        aria-label="Default select example">
+                                        <option value="1">À vista sem juros</option>
+                                        <option value="2">2x sem juros</option>
+                                        <option value="3">3x sem juros</option>
+                                        <option value="4">4x sem juros</option>
+                                        <option value="5">5x sem juros</option>
+                                        <option value="6">6x sem juros</option>
+                                        <option value="7">7x sem juros</option>
+                                        <option value="8">8x sem juros</option>
+                                        <option value="9">9x sem juros</option>
+                                        <option value="10">10x com juros</option>
+                                        <option value="11">11x com juros</option>
+                                        <option value="12">12x com juros</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h1 class="text-md font-semibold leading-tight tracking-tight text-gray-900 md:text-md mt-4 mb-2">
-                        Endereço de entrega
-                    </h1>
-                    <input type="RADIO" name="endereco" class="mr-2 mb-4" th:text="${enderecos.rua}" />
+                </div>
+                <!-- Sub total -->
+                <div class="justify-between rounded-lg bg-white p-6 shadow-md sm:justify-start hidden">
+
                     <table class="">
                         <thead class="text-lg text-gray-400 uppercase text-center">
                             <tr>
@@ -131,25 +225,27 @@
                                 <td class="text-left ml-8 text-xs" th:text="${item.produto.nome}"></td>
 
                                 <td class="text-md text-center">
-                                    <!-- <a class="text-white bg-purple-300 hover:bg-purple-500 font-bold rounded-full text-sm px-1 py-0.5 text-center"
+                                    <a class="text-white bg-purple-300 hover:bg-purple-500 font-bold rounded-full text-sm px-1 py-0.5 text-center"
                                         th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id},acao=${0})}"
-                                        role="button"><i class="ph-bold ph-minus"></i></a> -->
+                                        role="button"><i class="ph-bold ph-minus"></i></a>
+
                                     <span th:text="${item.quantidade}"></span>
-                                    <!-- <a class="text-white bg-purple-300 hover:bg-purple-500 font-bold rounded-full text-sm px-1 py-0.5 text-center"
+
+                                    <a class="text-white bg-purple-300 hover:bg-purple-500 font-bold rounded-full text-sm px-1 py-0.5 text-center"
                                         th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id},acao=${1})}"
-                                        role="button"><i class="ph-bold ph-plus"></i></a> -->
+                                        role="button"><i class="ph-bold ph-plus"></i></a>
                                 </td>
                                 <td class="text-md text-center">
                                     R$ <span th:text="${item.valorUnitario}"></span>
                                 </td>
-                                <!-- <td>
+                                <td>
                                     <div class="flex flex-row items-center">
                                         <a th:href="@{/removerProduto/{id}(id=${item.produto.id})}"
                                             class="bg-purple-300 hover:bg-purple-500 rounded-lg px-3 py-2 text-center mr-2 text-white ml-5">
                                             <i class="ph-light ph-trash"></i>
                                         </a>
                                     </div>
-                                </td> -->
+                                </td>
                             </tr>
                         </tbody>
                     </table>
