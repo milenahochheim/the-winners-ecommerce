@@ -98,7 +98,7 @@ public class CarrinhoController {
     }
 
     @GetMapping("/pagamento")
-    public ModelAndView pagarCompra() {
+    public ModelAndView pagarCompra(String formaPagamento) {
         buscarUsuarioLogado();
         ModelAndView mv = new ModelAndView("cliente/pagamento");
         calcularTotal();
@@ -108,6 +108,8 @@ public class CarrinhoController {
         List<Endereco> enderecosList = cliente.getEnderecos();
 
         endereco = enderecosList.get(0);
+        compra.setCliente(cliente);
+        compra.setFormaPagamento(formaPagamento);
 
         mv.addObject("compra", compra);
         mv.addObject("listaItens", itensCompra);

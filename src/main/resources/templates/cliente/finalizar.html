@@ -100,16 +100,18 @@
                         <!-- <p class="text-md font-normal">Finalize sua compra <span th:text="${cliente.nome}"
                                 class="text-md font-semibold text-purple-800"></span><span
                                 class="text-md font-semibold text-purple-800">!</span></p> -->
+                                           <p>E-mail: <span th:text="${cliente.email}"
+                                class="text-md font-semibold text-purple-800"></span></p>
                         <p>Endereço de entrega: <span class="text-md font-semibold text-purple-800"
                                 th:text="${enderecos.rua}"> </p>
-                        <p>E-mail: <span th:text="${cliente.email}"
-                                class="text-md font-semibold text-purple-800"></span></p>
+              <p class="pb-4">Método de pagamento: <span class="text-md font-semibold text-purple-800"
+                                th:text="${enderecos.rua}"> </p>
 
                     </div>
-                    <h1 class="text-md font-semibold leading-tight tracking-tight text-gray-900 md:text-md mt-4 mb-2">
+                    <!-- <h1 class="text-md font-semibold leading-tight tracking-tight text-gray-900 md:text-md mt-4 mb-2">
                         Endereço de entrega
                     </h1>
-                    <input type="RADIO" name="endereco" class="mr-2 mb-4" th:text="${enderecos.rua}" />
+                    <p name="endereco" class="mr-2 mb-4" th:text="${enderecos.rua}"></p> -->
                     <table class="">
                         <thead class="text-lg text-gray-400 uppercase text-center">
                             <tr>
@@ -178,7 +180,7 @@
                     </div>
                     <button
                         class="mt-10 w-full rounded-md bg-purple-400 hover:bg-purple-600 py-1.5 px-16 font-medium text-white">
-                        Resumo
+                        Finalizar
                     </button>
                 </div>
             </div>
