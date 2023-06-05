@@ -143,7 +143,7 @@ public class CarrinhoController {
     public ModelAndView confirmarCompra(String formaPagamento) {
         ModelAndView mv = new ModelAndView("cliente/compra");
         compra.setCliente(cliente);
-        compra.setFormaPagamento(formaPagamento);
+        compra.setFormaPagamento(compra.getFormaPagamento());
         repositoryCompra.saveAndFlush(compra);
 
         for (ItensCompra c : itensCompra) {

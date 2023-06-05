@@ -90,7 +90,7 @@
         <h1 class="mb-8 text-center text-3xl font-semibold text-purple-400">
             Resumo da compra
         </h1>
-        <form action="/finalizar/confirmar" method="post" class="" name="incrição">
+        <form action="/finalizar/confirmar" th:method="post" class="" name="incrição">
 
             <div class="justify-center px-6 md:flex md:space-x-2 xl:px-0 mr-10 ml-10">
 
@@ -105,7 +105,7 @@
                         <p>Endereço de entrega: <span class="text-md font-semibold text-purple-800"
                                 th:text="${enderecos.rua}"> </p>
               <p class="pb-4">Método de pagamento: <span class="text-md font-semibold text-purple-800"
-                                th:text="${enderecos.rua}"> </p>
+                                th:text="${compra.formaPagamento}"> </p>
 
                     </div>
                     <!-- <h1 class="text-md font-semibold leading-tight tracking-tight text-gray-900 md:text-md mt-4 mb-2">
