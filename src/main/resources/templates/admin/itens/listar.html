@@ -8,16 +8,16 @@
     <link rel="stylesheet" th:href="@{/css/main.css}" />
   <script type="text/javascript" th:src="@{/js/ProductForms.js}"></script>
 
-    <title>Dashboard Produtos</title>
+    <title>Dashboard Itens Comprados</title>
 </head>
 
 <body>
     <div class="text-center justify-between flex items-center mt-10">
         <!-- TÍTULO -->
-        <p class="text-5xl font-semibold pl-10">Dashboard Produtos</p>
+        <p class="text-5xl font-semibold pl-10">Dashboard Itens Comprados</p>
         <!-- SEARCH BAR -->
         <div class="flex pl-10">
-            <label for="simple-search" class="sr-only">Procurar produto</label>
+            <label for="simple-search" class="sr-only">Procurar Itens Comprados</label>
             <div class="relative w-96">
 
                 <input type="text" id="simple-search"
@@ -27,7 +27,7 @@
             <button type="submit"
                 class="p-2.5 ml-2 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 rounded-lg border">
                 <i class="ph-light ph-magnifying-glass text-white text-xl"></i>
-                <span class="sr-only">Procurar produto</span>
+                <span class="sr-only">Procurar Itens Comprados</span>
             </button>
         </div>
         <!-- BOTÕES -->
@@ -52,27 +52,18 @@
                         Código
                     </th>
                     <th scope="col" class="px-6 py-3 text-md">
-                        Nome
+                        Produto
+                    </th>
+                      <th scope="col" class="px-6 py-3 text-md">
+                        Compra
                     </th>
                     <th scope="col" class="px-6 py-3 text-md">
-                        Descrição
+                        Quantidade
                     </th>
                     <th scope="col" class="px-6 py-3 text-md">
-                        Estoque
+                        Valor total
                     </th>
-                    <th scope="col" class="px-6 py-3 text-md">
-                        Preço (R$)
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-md">
-                        Avaliação
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-md">
-                        Imagem
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-md">
-                        Status
-                    </th>
-
+                  
                     <th scope="col" class="px-6 py-3 text-md">
                         Ações
                     </th>
@@ -82,35 +73,17 @@
             </thead>
 
             <tbody>
-                <tr th:each="dados : ${listaProdutos}">
+                <tr th:each="dados : ${listaItensCompra}">
                     <td class="text-md" th:text="${dados.id}"></td>
-                    <td class="text-left mr-4" th:text="${dados.nome}"></td>
-                    <td class="text-sm py-10 pl-6 text-left" th:text="${dados.descricao}"></td>
+                    <td class="text-center" th:text="${dados.produto.nome}"></td>
+                    <td class="text-sm py-10 pl-6 text-center" th:text="${dados.compra.id}"></td>
                     <td class="text-md" th:text="${dados.quantidade}"></td>
-                    <td class="text-md" th:text="${dados.preco}"></td>
-                    <td class="text-md" th:text="${dados.avaliacao}"></td>
-					<td><img class="ml-4" th:src="@{/admin/produtos/mostrarImagem/{imagem}(imagem=${dados.nomeImagem})}" width="100"/></td>
-
-                    <td>
-                        <form action="#" method="post" th:action="@{/produtos/{id}(id=${dados.id})}"
-                            th:object="${produto}">
-
-                            <input onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
-                                th:data-confirm-delete="|Você deseja mudar o status do produto?|" class="form-check-input"
-                                type="checkbox" onchange="this.form.submit()" th:checked="${dados.status}">
-
-                        </form>
-
-                    </td>
+                    <td class="text-md" th:text="${dados.valorTotal}"></td>
                     <td>
                         <div class="flex flex-row items-center">
                             <a th:href="@{/admin/produtos/editar/{id}(id=${dados.id})}"
                                 class="bg-purple-300 hover:bg-purple-500 rounded-lg px-3 py-2 text-center mr-2 text-white ml-5">
                                 <i class="ph-light ph-pencil-line"></i>
-                            </a>
-                            <a th:href="@{/produtos/Detalhes(id=${dados.id})}"
-                                class="bg-gray-400 hover:bg-gray-500 rounded-lg px-3 py-2 text-center ml-2 mr-2 text-white">
-                                <i class="ph-light ph-info"></i>
                             </a>
                         </div>
                     </td>

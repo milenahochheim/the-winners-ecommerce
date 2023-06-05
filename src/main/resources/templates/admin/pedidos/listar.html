@@ -64,6 +64,9 @@
                         Cliente
                     </th>
                     <th scope="col" class="px-6 py-3 text-md">
+                        ID Cliente
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-md">
                         Ações
                     </th>
 
@@ -77,7 +80,9 @@
                     <td class="text-center" th:text="${dados.dataCompra}"></td>
                     <td class="text-sm py-10 pl-6 text-center" th:text="${dados.formaPagamento}"></td>
                     <td class="text-md" th:text="${dados.valorTotal}"></td>
-                    <td class="text-md" ></td>
+                    <td class="text-md" th:text="${dados.cliente.nome}"></td>
+                    <td class="text-md" th:text="${dados.cliente.id}"></td>
+
                     <td>
                         <div class="flex flex-row items-center">
                             <a th:href="@{/admin/produtos/editar/{id}(id=${dados.id})}"

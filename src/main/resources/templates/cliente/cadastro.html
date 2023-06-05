@@ -73,7 +73,7 @@
       </div>
     </div>
   </nav>
-  <div class="md:mt-40 mt-24 text-center">
+  <!-- <div class="md:mt-40 mt-24 text-center">
       <p class="md:text-xl text-md text-purple-800 font-medium">
       Para continuar sua compra
     </p>
@@ -82,9 +82,8 @@
     </p>
     <div class="md:text-sm text-xs text-purple-800 font-medium mt-2">
     <span >ou </span><a th:href="@{/cliente/login}" class="underline">acesse sua conta</a>
-  </div>
-  </div>
-  <div class="px-10 md:px-20 py-10 flex flex-col md:flex-row justify-center">
+  </div> -->
+  <div class="px-10 md:px-20 py-10 flex flex-col md:flex-row justify-center md:mt-40 mt-24 ">
     <form method="get" action="#" th:method="post" th:action="@{/cliente/salvar}" th:object="${cliente}">
       <div>
         <p class="mb-3 text-lg font-medium">Dados pessoais</p>
@@ -93,7 +92,7 @@
         <!-- NOME COMPLETO -->
         <div class="mb-6">
           <label for="nome" class="block mb-2 text-sm font-medium text-gray-900">NOME COMPLETO</label>
-          <input type="text" id="nome" name="nome"
+          <input type="text" id="nome" name="nome" th:field="*{nome}"
             class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block p-2.5 w-80 md:w-96 focus:outline-none"
             placeholder="" />
         </div>
@@ -101,7 +100,7 @@
         <!-- E-MAIL -->
         <div class="mb-6 md:ml-4 ml-0">
           <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-MAIL</label>
-          <input type="email" id="email" name="email"
+          <input type="email" id="email" name="email"  th:field="*{email}"
             class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-80 p-2.5 focus:outline-none"
             placeholder="" required />
         </div>
@@ -111,7 +110,7 @@
         <!-- CPF -->
         <div class="mb-6">
           <label for="cpf" class="block mb-2 text-sm font-medium text-gray-900">CPF</label>
-          <input type="text" autocomplete="on" minlength="14" maxlength="14" id="cpf" name="cpf"
+          <input type="text" autocomplete="on" minlength="14" maxlength="14" id="cpf" name="cpf"  th:field="*{cpf}"
             onkeypress="maskCPF(this)"
             class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-64 p-2.5 focus:outline-none"
             placeholder="" required />
@@ -120,7 +119,7 @@
         <!-- GÊNERO -->
         <div class="mb-6 md:ml-4 ml-0">
           <label for="genero" class="block mb-2 text-sm font-medium text-gray-900">GÊNERO</label>
-          <select name="genero" id="genero"
+          <select name="genero" id="genero"  th:field="*{genero}"
             class="bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-56 p-2.5 focus:outline-none"
             aria-label="Default select example">
             <option value="Vazio">
@@ -138,7 +137,7 @@
         <!-- NASCIMENTO -->
         <div class="mb-6 md:ml-4 ml-0">
           <label for="nascimento" class="block mb-2 text-sm font-medium text-gray-900">DATA DE NASCIMENTO</label>
-          <input type="text" id="nascimento" name="nascimento" onkeypress="maskDate(this)" minlength="10" maxlength="10"
+          <input type="text" id="nascimento" name="nascimento" onkeypress="maskDate(this)" minlength="10" maxlength="10"  th:field="*{nascimento}"
             class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-52 p-2.5 focus:outline-none"
             placeholder="" required />
         </div>
@@ -159,7 +158,7 @@
           </div>
           <div class="mb-6 md:ml-4 ml-0">
             <label class="block mb-2 text-sm font-medium text-gray-900">ENDEREÇO</label>
-            <input name="rua" type="text" id="rua" size="60"
+            <input name="rua" type="text" id="rua" size="60" 
               class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-96 p-2.5 focus:outline-none"
               placeholder="" required />
           </div>

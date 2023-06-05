@@ -13,12 +13,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dev.ecommerce.model.Cliente;
 import com.dev.ecommerce.repository.ClienteRepository;
+import com.dev.ecommerce.repository.CompraRepository;
+import com.dev.ecommerce.model.Compra;
 
 @Controller
 public class ClienteController {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private CompraRepository compraRepository;
 
     @GetMapping("/cliente/cadastro")
     public ModelAndView cadastrar(Cliente cliente) {
@@ -40,12 +45,21 @@ public class ClienteController {
             return cadastrar(cliente);
         }
         cliente.setSenha(new BCryptPasswordEncoder().encode(cliente.getSenha()));
-        cliente = clienteRepository.saveAndFlush(cliente); //obter id do cliente
+        cliente = clienteRepository.saveAndFlush(cliente); // obter id do cliente
 
         cliente.setEnderecos(cliente.getEnderecosDTOs());
         clienteRepository.save(cliente);
-        
+
         return cadastrar(new Cliente());
+    }
+
+    @GetMapping("/cliente/perfil")
+    public ModelAndView listar() {
+        ModelAndView mv = new ModelAndView("cliente/perfil");
+        mv.addObject("listaCliente", clienteRepository.findAll());
+        mv.addObject("listaCompras", compraRepository.findAll());
+
+        return mv;
     }
 
 }
