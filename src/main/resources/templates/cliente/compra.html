@@ -122,7 +122,7 @@
   </nav>
   <div class="text-center">
     <h1 class="text-3xl font-semibold text-purple-400 mt-44 mb-10">
-      Pedido concluído com sucesso!
+      Pedido <span th:text="${compra.id}" ></span> concluído com sucesso!
     </h1>
     <a th:href="@{/}">Voltar para página inicial</a>
   </div>

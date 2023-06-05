@@ -142,6 +142,7 @@ public class CarrinhoController {
     @PostMapping("/finalizar/confirmar")
     public ModelAndView confirmarCompra(String formaPagamento) {
         ModelAndView mv = new ModelAndView("cliente/compra");
+        mv.addObject("compra", compra);
         compra.setCliente(cliente);
         compra.setFormaPagamento(compra.getFormaPagamento());
         repositoryCompra.saveAndFlush(compra);
