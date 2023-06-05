@@ -1,4 +1,6 @@
-<html xmlns:th="http://www.thymeleaf.org"></html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+</html>
 
 <head>
   <meta charset="UTF-8" />
@@ -15,106 +17,67 @@
 
 <body class="bg-gray-50">
   <!-- MENU PRINCIPAL -->
-  <nav
-    class="bg-purple-900 p-8 fixed w-full z-20 top-0 left-0 border-b border-gray-200"
-  >
+  <nav class="bg-purple-900 p-8 fixed w-full z-20 top-0 left-0 border-b border-gray-200">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
       <a th:href="@{/}" class="flex items-center">
-        <span
-          class="self-center text-3xl font-semibold whitespace-nowrap text-white title"
-          >Winners Collection</span
-        >
+        <span class="self-center text-3xl font-semibold whitespace-nowrap text-white title">Winners Collection</span>
       </a>
       <div class="flex md:order-2">
         <a th:href="@{/carrinho}">
-          <button
-            type="button"
-            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5"
-          >
+          <button type="button"
+            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
             <i class="ph-light ph-shopping-cart-simple"></i>
           </button>
         </a>
 
         <a th:href="@{/cliente/perfil}">
-          <button
-            type="button"
-            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5"
-          >
+          <button type="button"
+            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
             <i class="ph-fill ph-user"></i>
           </button>
         </a>
         <a th:href="@{/finalizar/logout}">
-          <button
-            type="button"
-            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5"
-          >
+          <button type="button"
+            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
             <i class="ph-light ph-sign-out"></i>
           </button>
         </a>
-        <button
-          data-collapse-toggle="navbar-sticky"
-          type="button"
+        <button data-collapse-toggle="navbar-sticky" type="button"
           class="inline-flex items-center p-2 text-sm text-white rounded-lg md:hidden hover:bg-gray-100"
-          aria-controls="navbar-sticky"
-          aria-expanded="false"
-        >
+          aria-controls="navbar-sticky" aria-expanded="false">
           <span class="sr-only">Open main menu</span>
-          <svg
-            class="w-6 h-6"
-            aria-hidden="true"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
+          <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
               d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clip-rule="evenodd"
-            ></path>
+              clip-rule="evenodd"></path>
           </svg>
         </button>
       </div>
-      <div
-        class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-        id="navbar-sticky"
-      >
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
         <ul
-          class="flex flex-col p-4 mt-4 border border-gray-200 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0"
-        >
+          class="flex flex-col p-4 mt-4 border border-gray-200 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0">
           <li>
-            <a
-              th:href="@{/home}"
-              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0 aria-current="
-              >Home</a
-            >
+            <a th:href="@{/home}"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0 aria-current=">Home</a>
           </li>
           <li>
-            <a
-              href="./ActionFigures"
-              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0"
-              >Action Figures</a
-            >
+            <a href="./ActionFigures"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Action
+              Figures</a>
           </li>
           <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0"
-              >Pop Funko</a
-            >
+            <a href="#"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Pop
+              Funko</a>
           </li>
           <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0"
-              >Winners</a
-            >
+            <a href="#"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Winners</a>
           </li>
           <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-gray-300 md:p-0"
-              >Contato</a
-            >
+            <a href="#"
+              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-gray-300 md:p-0">Contato</a>
           </li>
         </ul>
       </div>
@@ -125,57 +88,47 @@
     <h1 class="mb-5 text-center text-3xl font-semibold text-purple-400">
       Itens da sua compra
     </h1>
-    <div
-      class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0"
-    >
+    <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
       <div class="rounded-lg md:w-4/5">
-        <div
-          class="justify-between mb-6 mt-10 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
-        >
+        <div class="justify-between mb-6 mt-10 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
           <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
             <div class="mt-5 sm:mt-0">
               <form method="get" action=".">
                 <h2 class="text-lg font-semibold text-gray-900">Frete</h2>
                 <p class="mt-1 pr-2 mb-4 text-sm text-gray-700">Digite o CEP</p>
                 <div class="mb-6">
-                  <input
-                    type="text"
-                    id="cep"
-                    name="cep"
-                    value=""
-                    size="10"
-                    maxlength="9"
-                    onblur="pesquisacep(this.value);"
-                    class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-48 p-2.5 focus:outline-none"
-                    placeholder=""
-                    required
-                  />
-                  <button
-                    onclick="showOptions()"
-                    id="myButton"
-                    class="text-white bg-purple-800 hover:bg-purple-700 font-medium rounded-lg text-sm inline-block w-80 md:w-40 p-2.5 text-center mr-4 mt-4 md:mt-0"
-                  >
-                    Buscar
-                  </button>
+                  <input type="text" id="cep" name="cep" value="" size="10" maxlength="9"
+                  onblur="pesquisacep(this.value);"
+                  class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-48 p-2.5 focus:outline-none"
+                  placeholder="" required />
+                  <button onclick="showOptions()" id="myButton"
+                  class="text-white bg-purple-800 hover:bg-purple-700 font-medium rounded-lg text-sm inline-block w-80 md:w-40 p-2.5 text-center mr-4 mt-4 md:mt-0">
+                  Buscar
+                </button>
+              </div>
+            </form>
+            
+            <form action="/salvarFrete" method="post">
+              <div class="options">
+                <div th:each="frete, iterStatus : ${freteList}">
+                  <label th:for="${'frete-' + iterStatus.index}">
+                    <input type="radio" name="valorFrete" th:value="${frete}" th:id="${'frete-' + iterStatus.index}"
+                      onclick="atualizarValorTotal(this)">
+                    <span th:if="${iterStatus.index == 0}">Motoboy: </span>
+                    <span th:if="${iterStatus.index == 1}">Sedex: </span>
+                    <span th:if="${iterStatus.index == 2}">Fedex: </span>
+                    R$ <span th:text="${frete}"></span>
+                  </label>
                 </div>
-              </form>
-              <form method="POST" action="/processar-frete">
-                <div class="options">
-                  <div th:each="frete : ${freteList}">
-                    <input type="radio" name="frete" th:value="${frete}" th:text="${frete}" onclick="atualizarValorTotal(this)">
-                  </div>
-                </div>
+              </div>
 
-              </form>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Sub total -->
-      <div
-        class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3"
-      >
+      <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
         <div class="mb-2 flex justify-between">
           <p class="text-gray-700">Itens</p>
           <p class="text-gray-700">
@@ -197,19 +150,16 @@
             </p>
           </div>
         </div>
-        <a
-          th:href="pagamento"
-          type="submit"
-          class="mb-4 w-full rounded-md bg-purple-400 hover:bg-purple-600 py-1.5 px-24 font-medium text-white"
-        >
+        <button type="submit"
+          class="mb-4 w-full rounded-md bg-purple-400 hover:bg-purple-600 py-1.5 px-24 font-medium text-white">
           Continuar
-        </a>
-        <a
-          th:href="@{/}"
-          class="mt-4 w-full text-sm font-medium rounded-md bg-gray-300 hover:bg-gray-400 px-4 py-1 text-gray-700 text-center ml-20"
-        >
+        </button>
+        <a th:href="@{/}"
+          class="mt-4 w-full text-sm font-medium rounded-md bg-gray-300 hover:bg-gray-400 px-4 py-1 text-gray-700 text-center ml-20">
           Comprar mais
         </a>
+
+        </form>
       </div>
     </div>
   </div>
@@ -251,11 +201,11 @@
     let randomNumber = Math.floor(Math.random() * 20) + 10;
     document.getElementById("randomNumber").innerHTML = randomNumber;
   }
-  var radios = document.getElementsByName("frete");
+  var radios = document.getElementsByName("valorFrete");
   var freteSelecionadoElement = document.getElementById("frete-selecionado");
 
   for (var i = 0; i < radios.length; i++) {
-    radios[i].addEventListener("change", function() {
+    radios[i].addEventListener("change", function () {
       var freteSelecionado = parseFloat(this.value);
       freteSelecionadoElement.textContent = freteSelecionado.toFixed(2);
     });
@@ -263,7 +213,7 @@
 
   function atualizarValorTotal(radio) {
     var valorFrete = parseFloat(radio.value);
-    var valorItem = parseFloat([[${compra.valorTotal}]]);
+    var valorItem = parseFloat([[${ compra.valorTotal }]]);
     var valorTotal = valorItem + valorFrete;
     document.getElementById("total").textContent = valorTotal.toFixed(2);
   }
@@ -292,6 +242,7 @@
   .ph-minus {
     font-size: 12px;
   }
+
   .ph-sign-out {
     font-size: 25px;
   }
@@ -313,6 +264,7 @@
   }
 
   @layer utilities {
+
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
       -webkit-appearance: none;

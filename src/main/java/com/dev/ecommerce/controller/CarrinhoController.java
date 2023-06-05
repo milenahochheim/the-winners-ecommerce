@@ -57,7 +57,7 @@ public class CarrinhoController {
     private void calcularTotal() {
         compra.setValorTotal(0.);
         for (ItensCompra it : itensCompra) {
-            compra.setValorTotal(compra.getValorTotal() + it.getValorTotal());
+            compra.setValorTotal(compra.getValorTotal() + it.getValorTotal() );
         }
     }
 
@@ -228,13 +228,14 @@ public class CarrinhoController {
         return "redirect:/carrinho";
     }
 
-    @PostMapping("/processar-frete")
-    public ModelAndView processarFrete() {
+    @PostMapping("/salvarFrete")
+    public ModelAndView salvarFrete(@RequestParam("valorFrete") String valorFrete) {
+        double frete = Double.parseDouble(valorFrete);
         
-        ModelAndView mv = new ModelAndView("cliente/pagamento");
-       
-    
-        return mv;
+        // Faça o que desejar com o valor do frete, como salvá-lo em uma variável no servidor
+        compra.setFrete(frete);
+        // Redirecione para a página desejada após salvar o valor do frete
+        return new ModelAndView("redirect:/pagamento");
     }
 
 }
