@@ -129,68 +129,6 @@
       class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0"
     >
       <div class="rounded-lg md:w-4/5">
-        <!-- <div
-          class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
-        >
-          <table class="">
-            <thead class="text-lg text-gray-400 uppercase text-center">
-              <tr>
-                <th scope="col" class="px-6 py-3 text-sm"></th>
-                <th scope="col" class="px-6 py-3 text-sm">Produto</th>
-                <th scope="col" class="px-6 py-3 text-sm">Quantidade</th>
-                <th scope="col" class="px-6 py-3 text-sm">Preço</th>
-                <th scope="col" class="px-6 py-3 text-sm"></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr th:each="item : ${listaItens}">
-                <td>
-                  <img
-                    class="ml-4"
-                    th:src="@{/admin/produtos/mostrarImagem/{imagem}(imagem=${item.produto.nomeImagem})}"
-                    width="100"
-                  />
-                </td>
-                <td
-                  class="text-left mr-4 text-xs"
-                  th:text="${item.produto.nome}"
-                ></td>
-
-                <td class="text-md text-center">
-                  <a
-                    class="text-white bg-purple-300 hover:bg-purple-500 font-bold rounded-full text-sm px-1 py-0.5 text-center"
-                    th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id},acao=${0})}"
-                    role="button"
-                    ><i class="ph-bold ph-minus"></i
-                  ></a>
-
-                  <span th:text="${item.quantidade}"></span>
-
-                  <a
-                    class="text-white bg-purple-300 hover:bg-purple-500 font-bold rounded-full text-sm px-1 py-0.5 text-center"
-                    th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id},acao=${1})}"
-                    role="button"
-                    ><i class="ph-bold ph-plus"></i
-                  ></a>
-                </td>
-                <td class="text-md text-center">
-                  R$ <span th:text="${item.valorUnitario}"></span>
-                </td>
-                <td>
-                  <div class="flex flex-row items-center">
-                    <a
-                      th:href="@{/removerProduto/{id}(id=${item.produto.id})}"
-                      class="bg-purple-300 hover:bg-purple-500 rounded-lg px-3 py-2 text-center mr-2 text-white ml-5"
-                    >
-                      <i class="ph-light ph-trash"></i>
-                    </a>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div> -->
         <div
           class="justify-between mb-6 mt-10 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
         >
@@ -220,14 +158,14 @@
                     Buscar
                   </button>
                 </div>
+              </form>
+              <form method="POST" action="/processar-frete">
                 <div class="options">
-                  <label>
-                    <input type="radio" name="option" value="opcao1" />
-                    Motoboy (3 dias úteis):
-                    <span class="font-semibold">R$ </span
-                    ><span id="randomNumber" class="font-semibold"></span>
-                  </label>
+                  <div th:each="frete : ${freteList}">
+                    <input type="radio" name="frete" th:value="${frete}" th:text="${frete}" onclick="atualizarValorTotal(this)">
+                  </div>
                 </div>
+
               </form>
             </div>
           </div>
@@ -246,14 +184,16 @@
         </div>
         <div class="flex justify-between">
           <p class="text-gray-700">Frete</p>
-          <p class="text-gray-700">R$ <span></span></p>
+          <p class="text-gray-700">
+            R$ <span id="frete-selecionado"></span>
+          </p>
         </div>
         <hr class="my-4" />
         <div class="flex justify-between">
           <p class="text-lg font-semibold">Total</p>
           <div class="">
             <p class="mb-8 text-lg font-semibold">
-              R$ <span th:text="${compra.valorTotal}"></span>
+              R$ <span id="total"></span>
             </p>
           </div>
         </div>
@@ -310,6 +250,22 @@
 
     let randomNumber = Math.floor(Math.random() * 20) + 10;
     document.getElementById("randomNumber").innerHTML = randomNumber;
+  }
+  var radios = document.getElementsByName("frete");
+  var freteSelecionadoElement = document.getElementById("frete-selecionado");
+
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].addEventListener("change", function() {
+      var freteSelecionado = parseFloat(this.value);
+      freteSelecionadoElement.textContent = freteSelecionado.toFixed(2);
+    });
+  }
+
+  function atualizarValorTotal(radio) {
+    var valorFrete = parseFloat(radio.value);
+    var valorItem = parseFloat([[${compra.valorTotal}]]);
+    var valorTotal = valorItem + valorFrete;
+    document.getElementById("total").textContent = valorTotal.toFixed(2);
   }
 </script>
 

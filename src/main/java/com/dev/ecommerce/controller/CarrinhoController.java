@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dev.ecommerce.model.Endereco;
@@ -78,7 +80,7 @@ public class CarrinhoController {
     }
 
     @GetMapping("/frete")
-    public ModelAndView freteCompra() {
+    public ModelAndView freteCompra( ) {
         buscarUsuarioLogado();
         ModelAndView mv = new ModelAndView("cliente/frete");
         calcularTotal();
@@ -86,13 +88,17 @@ public class CarrinhoController {
         Optional<Cliente> clienteOpt = repositoryCliente.findById(cliente.getId());
         cliente = clienteOpt.get();
         List<Endereco> enderecosList = cliente.getEnderecos();
-
+        List<Double> freteList = new ArrayList<>();
+        
         endereco = enderecosList.get(0);
-
+        freteList.add(10.0);
+        freteList.add(20.0);
+        freteList.add(30.0);
         mv.addObject("compra", compra);
         mv.addObject("listaItens", itensCompra);
         mv.addObject("cliente", cliente);
         mv.addObject("enderecos", endereco);
+        mv.addObject("freteList", freteList);
         return mv;
 
     }
@@ -216,8 +222,19 @@ public class CarrinhoController {
             item.setValorTotal(item.getValorTotal() + (item.getQuantidade() * item.getValorUnitario()));
 
             itensCompra.add(item);
-        }
 
+        }
+        
         return "redirect:/carrinho";
     }
+
+    @PostMapping("/processar-frete")
+    public ModelAndView processarFrete() {
+        
+        ModelAndView mv = new ModelAndView("cliente/pagamento");
+       
+    
+        return mv;
+    }
+
 }
