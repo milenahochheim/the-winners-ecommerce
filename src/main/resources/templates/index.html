@@ -96,19 +96,16 @@
   </nav>
 
   <!-- CARDS DE PRODUTOS -->
-  <div class="md:mt-44 mt-44 text-center">
+  <div class="md:mt-44 mt-40 mb-4 text-center">
     <p class="md:text-5xl text-xl font-semibold text-purple-700 title">
       LANÇAMENTOS ACTION FIGURES
     </p>
-    <!-- <p class="text-sm md:text-xl font-medium text-gray-700 title">
-      confira logo abaixo!
-    </p> -->
   </div>
   <div class="flex flex-col md:flex-row justify-center ml-8 md:ml-0">
     <!-- CARD 1 -->
     <div
       th:each="prod : ${listaProdutos}"
-      class="w-72 max-w-sm bg-white border border-gray-200 rounded-lg shadow justify-center md:mt-12 mt-5 mb-10 mx-4"
+      class="w-72 max-w-sm bg-white border border-gray-200 rounded-lg shadow justify-center md:mt-12 mb-16 mx-4"
     >
       <a href="#">
         <img

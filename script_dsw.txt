@@ -1,0 +1,9 @@
+﻿SCRIPT NECESSÁRIO PARA EXECUÇÃO DO SOFTWARE
+
+
+Integrantes: Elton de Freitas, Keity Pires, Matheus Galvão, Milena Hochheim e Vinicius Gomes
+
+
+1. Criar database "loja" no mySQL
+2. Executar RUN no arquivo EcommerceApplication.java
+   1. src/main/java/com/dev/ecommerce/EcommerceApplication.java
