@@ -46,7 +46,8 @@ public class SecurityCliente extends WebSecurityConfigurerAdapter {
 				.disable().formLogin().loginPage("/cliente/login").permitAll().failureUrl("/cliente/login")
 				.loginProcessingUrl("/frete/login").defaultSuccessUrl("/frete").usernameParameter("username")
 				.passwordParameter("password").and().logout()
-				.logoutRequestMatcher(new AntPathRequestMatcher("/finalizar/logout")).logoutSuccessUrl("/").permitAll()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/finalizar/logout")).logoutSuccessUrl("/")
+				.permitAll()
 				.and().exceptionHandling().accessDeniedPage("/negadoCliente");
 	}
 

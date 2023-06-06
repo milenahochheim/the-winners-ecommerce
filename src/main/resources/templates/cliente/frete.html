@@ -17,94 +17,85 @@
 
 <body class="bg-gray-50">
   <!-- MENU PRINCIPAL -->
-  <nav class="bg-purple-900 p-8 fixed w-full z-20 top-0 left-0 border-b border-gray-200">
-    <div class="container flex flex-wrap items-center justify-between mx-auto">
-      <a th:href="@{/}" class="flex items-center">
-        <span class="self-center text-3xl font-semibold whitespace-nowrap text-white title">Winners Collection</span>
-      </a>
-      <div class="flex md:order-2">
-        <a th:href="@{/carrinho}">
-          <button type="button"
-            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
-            <i class="ph-light ph-shopping-cart-simple"></i>
-          </button>
-        </a>
+    <nav class="bg-purple-900 p-8 fixed w-full z-20 top-0 left-0 border-b border-gray-200">
+        <div class="container flex flex-wrap items-center justify-between mx-auto">
+            <a th:href="@{/}">
+                <span class="self-center text-3xl font-semibold whitespace-nowrap text-white title">Winners
+                    Collection</span>
+            </a>
+            <div class="flex md:order-2 mt-2 pl-32 md:pl-0">
+                <a th:href="@{/carrinho}">
+                    <button type="button"
+                        class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
+                        <i class="ph-light ph-shopping-cart-simple  text-lg md:text-2xl"></i>
+                    </button>
+                </a>
 
-        <a th:href="@{/cliente/perfil}">
-          <button type="button"
-            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
-            <i class="ph-fill ph-user"></i>
-          </button>
-        </a>
-        <a th:href="@{/finalizar/logout}">
-          <button type="button"
-            class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
-            <i class="ph-light ph-sign-out"></i>
-          </button>
-        </a>
-        <button data-collapse-toggle="navbar-sticky" type="button"
-          class="inline-flex items-center p-2 text-sm text-white rounded-lg md:hidden hover:bg-gray-100"
-          aria-controls="navbar-sticky" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
-          <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clip-rule="evenodd"></path>
-          </svg>
-        </button>
-      </div>
-      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-        <ul
-          class="flex flex-col p-4 mt-4 border border-gray-200 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0">
-          <li>
-            <a th:href="@{/home}"
-              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0 aria-current=">Home</a>
-          </li>
-          <li>
-            <a href="./ActionFigures"
-              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Action
-              Figures</a>
-          </li>
-          <li>
-            <a href="#"
-              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Pop
-              Funko</a>
-          </li>
-          <li>
-            <a href="#"
-              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Winners</a>
-          </li>
-          <li>
-            <a href="#"
-              class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-gray-300 md:p-0">Contato</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+                <a th:href="@{/cliente/perfil}">
+                    <button type="button"
+                        class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
+                        <i class="ph-fill ph-user  text-lg md:text-2xl"></i>
+                    </button>
+                </a>
+                <a th:href="@{/finalizar/logout}">
+                    <button type="button"
+                        class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
+                        <i class="ph-light ph-sign-out  text-lg md:text-2xl"></i>
+                    </button>
+                </a>
+            </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul
+                    class="flex flex-col p-4 mt-4 border border-gray-200 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0">
+                    <li>
+                        <a th:href="@{/home}"
+                            class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0 aria-current=">Home</a>
+                    </li>
+                    <li>
+                        <a href="./ActionFigures"
+                            class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Action
+                            Figures</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Pop
+                            Funko</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Winners</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-lg text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-gray-300 md:p-0">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <div class="h-screen bg-gray-100 pt-40">
-    <h1 class="mb-5 text-center text-3xl font-semibold text-purple-400">
-      Itens da sua compra
+  <div class="h-screen bg-gray-100 md:pt-40 pt-48">
+    <h1 class="mb-5 text-center md:text-3xl text-xl font-semibold text-purple-400">
+      Escolha o método de entrega
     </h1>
-    <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
+    <div class="mx-auto max-w-4xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
       <div class="rounded-lg md:w-4/5">
-        <div class="justify-between mb-6 mt-10 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+        <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
           <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
             <div class="mt-5 sm:mt-0">
-              <form method="get" action=".">
+              <form method="get" action="#">
                 <h2 class="text-lg font-semibold text-gray-900">Frete</h2>
-                <p class="mt-1 pr-2 mb-4 text-sm text-gray-700">Digite o CEP</p>
+                <p class="mt-1 pr-2 mb-4 text-sm text-gray-700">Digite o CEP para entrega</p>
                 <div class="mb-6">
                   <input type="text" id="cep" name="cep" value="" size="10" maxlength="9"
                   onblur="pesquisacep(this.value);"
-                  class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-80 md:w-48 p-2.5 focus:outline-none"
+                  class="shadow-sm bg-gray-50 border border-purple-900 text-gray-900 text-sm rounded-lg inline-block w-36 md:w-60 p-2.5 focus:outline-none"
                   placeholder="" required />
                   <button onclick="showOptions()" id="myButton"
-                  class="text-white bg-purple-800 hover:bg-purple-700 font-medium rounded-lg text-sm inline-block w-80 md:w-40 p-2.5 text-center mr-4 mt-4 md:mt-0">
+                  class="text-white bg-purple-800 hover:bg-purple-700 font-medium rounded-lg text-sm inline-block w-24 md:w-20 p-2.5 text-center mr-4 md:mt-4">
                   Buscar
                 </button>
+                <!-- <input name="rua" type="text" id="rua"/>      -->
               </div>
             </form>
             
@@ -114,9 +105,9 @@
                   <label th:for="${'frete-' + iterStatus.index}">
                     <input type="radio" name="valorFrete" th:value="${frete}" th:id="${'frete-' + iterStatus.index}"
                       onclick="atualizarValorTotal(this)">
-                    <span th:if="${iterStatus.index == 0}">Motoboy: </span>
-                    <span th:if="${iterStatus.index == 1}">Sedex: </span>
-                    <span th:if="${iterStatus.index == 2}">Fedex: </span>
+                    <span th:if="${iterStatus.index == 0}">Correios (14 dias): </span>
+                    <span th:if="${iterStatus.index == 1}">Sedex (10 dias): </span>
+                    <span th:if="${iterStatus.index == 2}">Fedex (3 dias): </span>
                     R$ <span th:text="${frete}"></span>
                   </label>
                 </div>
@@ -128,7 +119,7 @@
       </div>
 
       <!-- Sub total -->
-      <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+      <div class="mt-6 rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
         <div class="mb-2 flex justify-between">
           <p class="text-gray-700">Itens</p>
           <p class="text-gray-700">
@@ -151,11 +142,11 @@
           </div>
         </div>
         <button type="submit"
-          class="mb-4 w-full rounded-md bg-purple-400 hover:bg-purple-600 py-1.5 px-24 font-medium text-white">
+          class="mb-4 w-full rounded-md bg-purple-400 hover:bg-purple-600 py-1.5 md:px-24 px-28 font-medium text-white">
           Continuar
         </button>
         <a th:href="@{/}"
-          class="mt-4 w-full text-sm font-medium rounded-md bg-gray-300 hover:bg-gray-400 px-4 py-1 text-gray-700 text-center ml-20">
+          class="mt-4 w-full text-sm font-medium rounded-md bg-gray-300 hover:bg-gray-400 px-4 py-1 text-gray-700 text-center md:ml-16 ml-20">
           Comprar mais
         </a>
 
@@ -223,29 +214,6 @@
   @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap");
 
-  .ph-user {
-    font-size: 25px;
-  }
-
-  .ph-shopping-cart-simple {
-    font-size: 25px;
-  }
-
-  .ph-trash {
-    font-size: 20px;
-  }
-
-  .ph-plus {
-    font-size: 12px;
-  }
-
-  .ph-minus {
-    font-size: 12px;
-  }
-
-  .ph-sign-out {
-    font-size: 25px;
-  }
 
   nav {
     font-family: "Raleway", sans-serif;
