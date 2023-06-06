@@ -24,37 +24,26 @@
                 <span class="self-center text-3xl font-semibold whitespace-nowrap text-white title">Winners
                     Collection</span>
             </a>
-            <div class="flex md:order-2">
+            <div class="flex md:order-2 mt-2 pl-44 md:pl-0">
                 <a th:href="@{/carrinho}">
                     <button type="button"
                         class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
-                        <i class="ph-light ph-shopping-cart-simple"></i>
+                        <i class="ph-light ph-shopping-cart-simple  text-lg md:text-2xl"></i>
                     </button>
                 </a>
 
                 <a th:href="@{/cliente/perfil}">
                     <button type="button"
                         class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
-                        <i class="ph-fill ph-user"></i>
+                        <i class="ph-fill ph-user  text-lg md:text-2xl"></i>
                     </button>
                 </a>
                 <a th:href="@{/finalizar/logout}">
                     <button type="button"
-                        class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5">
-                        <i class="ph-light ph-sign-out"></i>
+                        class="text-purple-900 bg-white hover:bg-gray-300 font-medium rounded-full text-sm px-3 py-2.5 text-center mr-3 md:mr-5 hidden lg:block">
+                        <i class="ph-light ph-sign-out  text-lg md:text-2xl "></i>
                     </button>
                 </a>
-                <button data-collapse-toggle="navbar-sticky" type="button"
-                    class="inline-flex items-center p-2 text-sm text-white rounded-lg md:hidden hover:bg-gray-100"
-                    aria-controls="navbar-sticky" aria-expanded="false">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
             </div>
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul
@@ -128,37 +117,13 @@
                                         th:text="${item.produto.nome}"></td>
 
                                     <td class="text-sm text-center">
-                                        <!-- <a
-                      class="text-white bg-purple-300 hover:bg-purple-500 font-bold rounded-full text-xs px-1 py-0.5 text-center"
-                      th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id},acao=${0})}"
-                      role="button"
-                      ><i class="ph-bold ph-minus"></i
-                    ></a> -->
-
                                         <span th:text="${item.quantidade}"></span>
 
-                                        <!-- <a
-                      class="text-white bg-purple-300 hover:bg-purple-500 font-bold rounded-full text-xs px-1 py-0.5 text-center"
-                      th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id},acao=${1})}"
-                      role="button"
-                      ><i class="ph-bold ph-plus"></i
-                    ></a> -->
                                     </td>
                                     <td class="text-sm text-center">
                                         R$ <span th:text="${item.valorUnitario}"></span>
                                     </td>
-                                    <!-- <td>
-                    <div
-                      class="flex flex-row items-center justify-center md:justify-start"
-                    >
-                      <a
-                        th:href="@{/removerProduto/{id}(id=${item.produto.id})}"
-                        class="bg-purple-300 hover:bg-purple-500 rounded-lg px-3 py-2 text-center text-white ml-2"
-                      >
-                        <i class="ph-light ph-trash"></i>
-                      </a>
-                    </div>
-                  </td> -->
+     
                                 </tr>
                             </tbody>
                         </table>
@@ -248,13 +213,7 @@
     @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap");
 
-    .ph-user {
-        font-size: 25px;
-    }
 
-    .ph-shopping-cart-simple {
-        font-size: 25px;
-    }
 
     nav {
         font-family: "Raleway", sans-serif;
@@ -270,10 +229,6 @@
         width: auto;
         height: auto;
         margin: auto;
-    }
-
-    .ph-sign-out {
-        font-size: 25px;
     }
 
     .options {
