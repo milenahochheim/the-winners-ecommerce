@@ -94,23 +94,17 @@
   </nav>
 
   <!-- CARDS DE PRODUTOS -->
-  <div class="section__background flex flex-col md:flex-row md:mt-32 mt-0">
+  <div class="section__background flex md:flex-row md:mt-28 mt-0">
     <img th:src="@{images/test.png}" alt="hero" />
-
-    <!-- <div class="text-center md:text-left w-full pr-0 md:pr-20">
-      <div class="hidden md:flex relative w-full md:mt-10"></div>
-      <h1 class="font-semibold text-4xl md:text-7xl md:max-w-3x md:mt-44">
-        TESTE
-      </h1>
-      <h2 class="mt-5 mb-10 md:mb-0 font-normal text-2xl">teste</h2>
-    </div> -->
   </div>
-  <div class="md:mt-24 mt-48 text-left md:ml-12 ml-0">
+  <div
+    class="md:mt-24 mt-28 md:mb-0 mb-10 md:text-left text-center md:ml-12 ml-0"
+  >
     <p class="md:text-3xl text-xl font-bold text-purple-700 title">
       LANÇAMENTOS ACTION FIGURES
     </p>
   </div>
-  <div class="flex flex-col md:flex-row justify-center ml-8 md:ml-0">
+  <div class="flex flex-col md:flex-row justify-center ml-10 md:ml-0">
     <!-- CARD 1 -->
     <div
       th:each="prod : ${listaProdutos}"
