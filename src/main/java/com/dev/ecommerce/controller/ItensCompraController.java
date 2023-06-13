@@ -12,7 +12,7 @@ public class ItensCompraController {
     @Autowired
     private ItensCompraRepository itensCompraRepository;
 
-    @GetMapping("admin/itens/listar")
+    @GetMapping("itens/listar")
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("admin/itens/listar");
         mv.addObject("listaItensCompra", itensCompraRepository.findAll());

@@ -17,8 +17,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-@Order(2)
-public class SecurityAdministrativo extends WebSecurityConfigurerAdapter {
+@Order(3)
+public class SecurityEstoquista extends WebSecurityConfigurerAdapter {
 
         @Autowired
         private DataSource dataSource;
@@ -39,17 +39,20 @@ public class SecurityAdministrativo extends WebSecurityConfigurerAdapter {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
                 http.authorizeRequests()
-                                .antMatchers("/login").permitAll()
-                                .antMatchers("/admin/**").hasAuthority("administrador")
-                                .antMatchers("/admin/**").authenticated()
+                                .antMatchers("/estoquista/login").permitAll()
+                                .antMatchers("/estoquista/**").hasAuthority("estoquista")
+                                .antMatchers("/estoquista/**").authenticated()
                                 .and()
                                 .formLogin()
-                                .loginPage("/login").failureUrl("/login").loginProcessingUrl("/admin")
-                                .defaultSuccessUrl("/admin").usernameParameter("username")
+                                .loginPage("/estoquista/login").failureUrl("/estoquista/login")
+                                .loginProcessingUrl("/estoquista")
+                                .defaultSuccessUrl("/estoquista").usernameParameter("username")
                                 .passwordParameter("password").and()
-                                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))
-                                .logoutSuccessUrl("/login").deleteCookies("JSESSIONID").and().exceptionHandling()
-                                .accessDeniedPage("/negadoAdministrativo").and().csrf().disable();
+                                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/estoquista/logout"))
+                                .logoutSuccessUrl(
+                                                "/estoquista/login")
+                                .deleteCookies("JSESSIONID").and().exceptionHandling()
+                                .accessDeniedPage("/negadoEstoquista").and().csrf().disable();
 
         }
 
