@@ -36,7 +36,7 @@ public class FuncionarioController {
     @Autowired
     private CargoRepository cargoRepository;
 
-    @GetMapping("/funcionarios/cadastro")
+    @GetMapping("/admin/funcionarios/cadastro")
     public ModelAndView cadastrar(Funcionario funcionario) {
         ModelAndView mv = new ModelAndView("admin/funcionarios/cadastro");
         mv.addObject("funcionario", funcionario);
@@ -51,7 +51,7 @@ public class FuncionarioController {
     // return mv;
     // }
 
-    @GetMapping("/funcionarios/listar")
+    @GetMapping("/admin/funcionarios/listar")
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("admin/funcionarios/listar");
         mv.addObject("listaFuncionarios", funcionarioRepository.findAll());
@@ -60,21 +60,21 @@ public class FuncionarioController {
         return mv;
     }
 
-    @GetMapping("/funcionarios/editar/{id}")
+    @GetMapping("/admin/funcionarios/editar/{id}")
     public ModelAndView editar(@PathVariable("id") Long id, Model model) {
         Optional<Funcionario> funcionario = funcionarioRepository.findById(id);
 
         return cadastrar(funcionario.get());
     }
 
-    @GetMapping("/funcionarios/remover/{id}")
+    @GetMapping("/admin/funcionarios/remover/{id}")
     public ModelAndView remover(@PathVariable("id") Long id) {
         Optional<Funcionario> funcionario = funcionarioRepository.findById(id);
         funcionarioRepository.delete(funcionario.get());
         return listar();
     }
 
-    @PostMapping("/funcionarios/salvar")
+    @PostMapping("/admin/funcionarios/salvar")
     public ModelAndView salvar(@Valid Funcionario funcionario, BindingResult result) {
 
         // System.out.println(result.getAllErrors());
@@ -87,7 +87,7 @@ public class FuncionarioController {
         return cadastrar(new Funcionario());
     }
 
-    @PostMapping("/funcionarios/{id}")
+    @PostMapping("/admin/funcionarios/{id}")
     public ModelAndView atualizarStatus(@PathVariable("id") Long id) {
 
         Funcionario funcionario = funcionarioRepository.findById(id).get();
