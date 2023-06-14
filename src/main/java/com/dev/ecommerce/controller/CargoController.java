@@ -19,34 +19,34 @@ public class CargoController {
     @Autowired
     private CargoRepository cargoRepository;
 
-    @GetMapping("/admin/cargos/cadastro")
+    @GetMapping("/cargos/cadastro")
     public ModelAndView cadastrar(Cargo cargo) {
         ModelAndView mv = new ModelAndView("admin/cargos/cadastro");
         mv.addObject("cargo", cargo);
         return mv;
     }
 
-    @GetMapping("/admin/cargos/listar")
+    @GetMapping("/cargos/listar")
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("admin/cargos/listar");
         mv.addObject("listaCargos", cargoRepository.findAll());
         return mv;
     }
 
-    @GetMapping("/admin/cargos/editar/{id}")
+    @GetMapping("/cargos/editar/{id}")
     public ModelAndView editar(@PathVariable("id") Long id) {
         Optional<Cargo> cargo = cargoRepository.findById(id);
         return cadastrar(cargo.get());
     }
 
-    @GetMapping("/admin/cargos/remover/{id}")
+    @GetMapping("/cargos/remover/{id}")
     public ModelAndView remover(@PathVariable("id") Long id) {
         Optional<Cargo> cargo = cargoRepository.findById(id);
         cargoRepository.delete(cargo.get());
         return listar();
     }
 
-    @PostMapping("/admin/cargos/salvar")
+    @PostMapping("/cargos/salvar")
     public ModelAndView salvar(@Valid Cargo cargo, BindingResult result) {
 
         if (result.hasErrors()) {

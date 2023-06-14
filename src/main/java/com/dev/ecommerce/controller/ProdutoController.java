@@ -34,28 +34,28 @@ public class ProdutoController {
         this.static_caminho = caminhoImagens;
     }
 
-    @GetMapping("/admin/produtos/cadastro")
+    @GetMapping("/produtos/cadastro")
     public ModelAndView cadastrar(Produto produto) {
         ModelAndView mv = new ModelAndView("admin/produtos/cadastro");
         mv.addObject("produto", produto);
         return mv;
     }
 
-    @GetMapping("/admin/produtos/listar")
+    @GetMapping("/produtos/listar")
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("admin/produtos/listar");
         mv.addObject("listaProdutos", produtoRepository.findAll());
         return mv;
     }
 
-    @GetMapping("/admin/produtos/editar/{id}")
+    @GetMapping("/produtos/editar/{id}")
     public ModelAndView editar(@PathVariable("id") Long id, Model model) {
         Optional<Produto> produto = produtoRepository.findById(id);
         // model.addAttribute("cargo", cargo);
         return cadastrar(produto.get());
     }
 
-    @GetMapping("/admin/produtos/mostrarImagem/{imagem}")
+    @GetMapping("/produtos/mostrarImagem/{imagem}")
     @ResponseBody
     public byte[] retornarImagem(@PathVariable("imagem") String imagem) throws IOException {
         System.out.println(imagem);
@@ -67,42 +67,42 @@ public class ProdutoController {
         return null;
     }
 
-    @GetMapping("/admin/produtos/remover/{id}")
+    @GetMapping("/produtos/remover/{id}")
     public ModelAndView remover(@PathVariable("id") Long id) {
         Optional<Produto> produto = produtoRepository.findById(id);
         produtoRepository.delete(produto.get());
         return listar();
     }
 
-    @PostMapping("/admin/produtos/salvar")
+    @PostMapping("/produtos/salvar")
     public ModelAndView salvar(@Valid Produto produto, BindingResult result,
             @RequestParam("file") MultipartFile arquivo) {
-        
+
         if (result.hasErrors()) {
             return cadastrar(produto);
         }
 
-        produtoRepository.saveAndFlush(produto); //gerar id produto para salvar imagem posteriormente
+        produtoRepository.saveAndFlush(produto); // gerar id produto para salvar imagem posteriormente
 
         try {
             if (!arquivo.isEmpty()) {
                 String nome_arquivo = String.valueOf(produto.getId()) + arquivo.getOriginalFilename();
-                byte[] bytes = arquivo.getBytes(); 
+                byte[] bytes = arquivo.getBytes();
                 Path caminho = Paths.get(static_caminho, nome_arquivo);
-                Imagem imagem = new Imagem(produto, nome_arquivo, static_caminho+nome_arquivo);
+                Imagem imagem = new Imagem(produto, nome_arquivo, static_caminho + nome_arquivo);
 
                 Files.createFile(caminho);
                 Files.write(caminho, bytes);
 
                 produto.addImagem(imagem);
                 produtoRepository.save(produto);
-            }else{
+            } else {
                 System.out.println("Arquivo vazio");
                 return null;
             }
         } catch (IOException e) {
             System.out.println(e);
-            return  null;
+            return null;
         }
         return cadastrar(new Produto());
     }

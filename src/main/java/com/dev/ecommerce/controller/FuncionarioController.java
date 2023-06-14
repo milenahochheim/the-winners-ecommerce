@@ -36,7 +36,7 @@ public class FuncionarioController {
     @Autowired
     private CargoRepository cargoRepository;
 
-    @GetMapping("/admin/funcionarios/cadastro")
+    @GetMapping("/funcionarios/cadastro")
     public ModelAndView cadastrar(Funcionario funcionario) {
         ModelAndView mv = new ModelAndView("admin/funcionarios/cadastro");
         mv.addObject("funcionario", funcionario);
@@ -51,7 +51,7 @@ public class FuncionarioController {
     // return mv;
     // }
 
-    @GetMapping("/admin/funcionarios/listar")
+    @GetMapping("/funcionarios/listar")
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("admin/funcionarios/listar");
         mv.addObject("listaFuncionarios", funcionarioRepository.findAll());
@@ -60,21 +60,21 @@ public class FuncionarioController {
         return mv;
     }
 
-    @GetMapping("/admin/funcionarios/editar/{id}")
+    @GetMapping("/funcionarios/editar/{id}")
     public ModelAndView editar(@PathVariable("id") Long id, Model model) {
         Optional<Funcionario> funcionario = funcionarioRepository.findById(id);
 
         return cadastrar(funcionario.get());
     }
 
-    @GetMapping("/admin/funcionarios/remover/{id}")
+    @GetMapping("/funcionarios/remover/{id}")
     public ModelAndView remover(@PathVariable("id") Long id) {
         Optional<Funcionario> funcionario = funcionarioRepository.findById(id);
         funcionarioRepository.delete(funcionario.get());
         return listar();
     }
 
-    @PostMapping("/admin/funcionarios/salvar")
+    @PostMapping("/funcionarios/salvar")
     public ModelAndView salvar(@Valid Funcionario funcionario, BindingResult result) {
 
         // System.out.println(result.getAllErrors());
@@ -87,11 +87,11 @@ public class FuncionarioController {
         return cadastrar(new Funcionario());
     }
 
-    @PostMapping("/admin/funcionarios/{id}")
+    @PostMapping("/funcionarios/{id}")
     public ModelAndView atualizarStatus(@PathVariable("id") Long id) {
-      
+
         Funcionario funcionario = funcionarioRepository.findById(id).get();
-       
+
         if (funcionario.isStatus() == false) {
 
             funcionario.setStatus(true);
@@ -99,19 +99,18 @@ public class FuncionarioController {
         } else {
             funcionario.setStatus(false);
 
-           funcionarioRepository.saveAndFlush(funcionario);
+            funcionarioRepository.saveAndFlush(funcionario);
         }
         funcionarioRepository.saveAndFlush(funcionario);
-        return  listar();
-
+        return listar();
 
     }
 
-    //postman
+    // postman
 
-    //CADASTRAR FUNCIONÁRIO VIA POSTMAN
+    // CADASTRAR FUNCIONÁRIO VIA POSTMAN
     @PostMapping("/postman/cadastrarfuncionario")
-    public Funcionario cadastrar_postman(Model model, @RequestBody Funcionario funcionario){
+    public Funcionario cadastrar_postman(Model model, @RequestBody Funcionario funcionario) {
         try {
             funcionario.setSenha(new BCryptPasswordEncoder().encode(funcionario.getSenha()));
             return funcionarioRepository.saveAndFlush(funcionario);
@@ -121,10 +120,9 @@ public class FuncionarioController {
         return null;
     }
 
-
-    //faça uma função pra inserir via postman
+    // faça uma função pra inserir via postman
     @PostMapping("/postman/inserirfuncionario")
-    public Funcionario inserir_postman(Model model, @RequestBody Funcionario funcionario){
+    public Funcionario inserir_postman(Model model, @RequestBody Funcionario funcionario) {
         try {
             funcionario.setSenha(new BCryptPasswordEncoder().encode(funcionario.getSenha()));
             return funcionarioRepository.saveAndFlush(funcionario);

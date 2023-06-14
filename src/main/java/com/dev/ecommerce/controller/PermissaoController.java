@@ -26,7 +26,7 @@ public class PermissaoController {
     @Autowired
     private CargoRepository cargoRepository;
 
-    @GetMapping("/admin/permissoes/cadastro")
+    @GetMapping("/permissoes/cadastro")
     public ModelAndView cadastrar(Permissao permissao) {
         ModelAndView mv = new ModelAndView("admin/permissoes/cadastro");
         mv.addObject("permissao", permissao);
@@ -35,27 +35,27 @@ public class PermissaoController {
         return mv;
     }
 
-    @GetMapping("/admin/permissoes/listar")
+    @GetMapping("/permissoes/listar")
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("admin/permissoes/listar");
         mv.addObject("listaPermissoes", permissaoRepository.findAll());
         return mv;
     }
 
-    @GetMapping("/admin/permissoes/editar/{id}")
+    @GetMapping("/permissoes/editar/{id}")
     public ModelAndView editar(@PathVariable("id") Long id) {
         Optional<Permissao> permissao = permissaoRepository.findById(id);
         return cadastrar(permissao.get());
     }
 
-    @GetMapping("/admin/permissoes/remover/{id}")
+    @GetMapping("/permissoes/remover/{id}")
     public ModelAndView remover(@PathVariable("id") Long id) {
         Optional<Permissao> permissao = permissaoRepository.findById(id);
         permissaoRepository.delete(permissao.get());
         return listar();
     }
 
-    @PostMapping("/admin/permissoes/salvar")
+    @PostMapping("/permissoes/salvar")
     public ModelAndView salvar(@Valid Permissao permissao, BindingResult result) {
 
         if (result.hasErrors()) {
