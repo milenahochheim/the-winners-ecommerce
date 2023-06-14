@@ -27,11 +27,13 @@ public class Compra implements Serializable {
 
     @ManyToOne
     private Cliente cliente;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCompra = new Date();
 
     private String formaPagamento;
+
+    private String statusCompra;
 
     private Double frete;
 
@@ -83,6 +85,14 @@ public class Compra implements Serializable {
 
     public Double getFrete() {
         return frete;
+    }
+
+    public String getStatusCompra() {
+        return statusCompra;
+    }
+
+    public void setStatusCompra(String statusCompra) {
+        this.statusCompra = statusCompra;
     }
 
 }

@@ -40,13 +40,13 @@ public class SecurityEstoquista extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
                 http.authorizeRequests()
                                 .antMatchers("/estoquista/login").permitAll()
-                                .antMatchers("/estoquista/**").hasAuthority("estoquista")
-                                .antMatchers("/estoquista/**").authenticated()
+                                // .antMatchers("/estoquista/**").hasAuthority("estoquista")
+                                // .antMatchers("/estoquista/**").authenticated()
                                 .and()
                                 .formLogin()
                                 .loginPage("/estoquista/login").failureUrl("/estoquista/login")
                                 .loginProcessingUrl("/estoquista")
-                                .defaultSuccessUrl("/estoquista").usernameParameter("username")
+                                // .defaultSuccessUrl("/estoquista").usernameParameter("username")
                                 .passwordParameter("password").and()
                                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/estoquista/logout"))
                                 .logoutSuccessUrl(

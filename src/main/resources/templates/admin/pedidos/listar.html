@@ -84,11 +84,13 @@
                     <td class="text-md" th:text="${dados.cliente.id}"></td>
 
                     <td>
-                        <div class="flex flex-row items-center">
-                            <a th:href="@{/admin/produtos/editar/{id}(id=${dados.id})}"
-                                class="bg-purple-300 hover:bg-purple-500 rounded-lg px-3 py-2 text-center mr-2 text-white ml-5">
-                                <i class="ph-light ph-pencil-line"></i>
-                            </a>
+                        <div class="flex justify-center">
+                                   <select name="statusCompra" id="selecionar"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg inline-block w-full md:w-60 p-2.5 focus:outline-none">
+                                    <option value="pgt">Aguardando pagamento</option>
+                                    <option value="pgtEfetuado">Pagamento efetuado</option>
+                                    <option value="pedidoEntregue">Pedido entregue</option>
+                                </select>
                         </div>
                     </td>
                 </tr>
