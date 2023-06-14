@@ -17,7 +17,7 @@ public class CompraController {
     @Autowired
     private CompraRepository compraRepository;
 
-    @GetMapping("pedidos/listar")
+    @GetMapping("/admin/pedidos/listar")
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("admin/pedidos/listar");
         mv.addObject("listaCompras", compraRepository.findAll());

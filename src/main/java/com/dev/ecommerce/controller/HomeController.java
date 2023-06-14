@@ -10,10 +10,4 @@ public class HomeController {
     public String acessarHome() {
         return "admin/home";
     }
-
-    @GetMapping("/estoquista")
-    public String acessarEstoque() {
-        return "estoquista/home";
-    }
-
 }
